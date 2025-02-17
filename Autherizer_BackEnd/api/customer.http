@@ -1,0 +1,96 @@
+@baseURL = https://localhost:7000/api
+@expired_token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzkxOTc1NTUsImV4cCI6MTczOTIwMTE1NSwiY2xhaW1zIjp7Im5hbWUiOiJOaW1taSIsImVtYWlsIjoibmltbWlAZXhhbXBsZS5jb20ifX0.BXc6MXYOojeMmEFJvQMub6opRIEYYugMGmtuqEe2Lv3fIehtiKTCtF2lt2iZ9SeLwMgtDfji96G-4l5p0lXd0XNTKMXb3VTHg_kfXzGwx5Kl0QICwV2mmXxYJ4jPvE8qX4awfUnGAA5WeyDOcAGbsXEmh3FUIO9AdmXxiaQHkUG29EuBgW11VG0ABYScJ2xxqc0aM6zdo6l30-qbSTJOocLOmtJ5kxXGwLVW_7Px2u7vZ9tYqWYAyDXpalRr_mGcu2bkyik-WFB3UxKRTBYdzWSoVm3I0iulj-7QbkCHcwFlW4GPre24f0zhoVk4w-Z_pu-trsoi1wC60x3NP2wd6Q
+
+
+# @name loginCustomer
+POST {{baseURL}}/customers/login
+Content-Type: application/json
+
+{
+    "email": "prana@example.com",
+    "password": "prana123@"
+}
+
+###
+@token = {{loginCustomer.response.body.token}}
+
+###
+DELETE {{baseURL}}/logout
+
+### GET a customer by ID
+GET {{baseURL}}/customers/guru-pruthvi
+Authorization: BEARER {{token}}
+
+### GET all customers
+GET {{baseURL}}/customers
+Authorization: BEARER {{token}}
+
+### GET a payment by particular customer
+GET {{baseURL}}/customers/guru-pruthvi/payments
+
+### POST a payment by particular customer
+POST {{baseURL}}/customers/guru-pruthvi/payments
+Content-Type: application/json
+
+{
+    "amount": 1000
+}
+
+### GET a ticket raised by a customer
+GET {{baseURL}}/customers/guru-pruthvi/tickets
+
+### POST a ticket raised by a customer
+POST  {{baseURL}}/customers/guru-pruthvi/tickets
+Content-Type: application/json
+
+{
+    "ticketId": "TICKET123",
+    "employeeId": "EMP001",
+    "ticketType": "Technical Issue",
+    "ticketDescription": "Unable to access the dashboard.",
+    "ticketStatus": "PENDING",
+    "ticketPriority": "HIGH"
+}
+
+
+### GET a customer with INVALID ID
+GET {{baseURL}}/customers/INVALID_ID
+
+### POST a new customer
+POST {{baseURL}}/customers
+Content-Type: application/json
+
+{
+    "email": "prana@example.com",
+    "password": "prana123@",
+    "username": "prana",
+    "phone_Number": "1234567890",
+    "name": "Pranathi"
+}
+
+### POST a new Different Customer
+POST {{baseURL}}/customers
+Content-Type: application/json
+
+{
+    "email": "pruthvi@example.com",
+    "password": "securePass456",
+    "username": "pruthvi-guru",
+    "phone_Number": "9999999999",
+    "name": "Pruthvi Guru"
+}
+
+
+### Delete the customer by id
+DELETE {{baseURL}}/customers/guru-pruthvi
+
+
+### PUT to update the customer Details
+PUT {{baseURL}}/customers/guru-pruthvi
+Content-Type: application/json
+
+{
+    "email": "guru@example.com",
+    "password": "securePass",
+    "username": "guru pruthvi"
+}

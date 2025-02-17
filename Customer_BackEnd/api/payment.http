@@ -1,0 +1,46 @@
+@baseURL = https://localhost/api
+
+### GET all payments
+GET {{baseURL}}/payments
+
+### GET a payment by ID
+GET {{baseURL}}/payments/PAY-s-345-1738503090358
+
+### GET a payment with INVALID ID
+GET {{baseURL}}/payments/INVALID_PAY_ID
+
+### POST a new payment
+POST {{baseURL}}/payments
+Content-Type: application/json
+
+{
+    "amount": 1200,
+    "paymentMethod": "PayPal",
+    "customerId": "guru-pruthvi",  
+    "status": "Pending"
+}
+
+
+### POST a new Different Payment
+POST {{baseURL}}/payments
+Content-Type: application/json
+
+{
+    "amount": 1800,
+    "paymentMethod": "PayPal",
+    "customerId": "pruthvi-guru",  
+    "status": "Pending"
+}
+
+### Delete the payment by ID
+DELETE {{baseURL}}/payments/PAY-s-345-1738503090358
+
+### PUT to update the payment Details
+PUT {{baseURL}}/payments/PAY-s-345-2025-02-02
+Content-Type: application/json
+
+{
+    "amount": 500,
+    "paymentMethod": "Debit Card",
+    "status": "Completed"
+}

@@ -1,0 +1,53 @@
+@baseURL = https://localhost:5000/api
+
+###GET all managers
+GET {{baseURL}}/managers
+
+### GET a manager by ID
+GET {{baseURL}}/managers/mgr12345
+
+###GET a manager with INVALID ID
+GET {{baseURL}}/managers/INVALID_ID
+
+### POST a new manager
+POST {{baseURL}}/managers
+Content-Type: application/json
+
+{
+    "Manager_ID": "mgr12345",
+    "email": "guru@example.com",
+    "password": "securePass123",
+    "username": "guru_pruthvi",
+    "phone_Number": "9876543210",
+    "name": "Guru Pruthvi",
+    "domain": "finance"
+}
+
+### POST a new manager
+POST {{baseURL}}/managers 
+Content-Type: application/json
+
+{
+    "Manager_ID": "mgr67890",
+    "email": "pruthvi@example.com",
+    "password": "securePass456",
+    "username": "pruthvi-guru",
+    "phone_Number": "9999999999",
+    "name": "Pruthvi Guru",
+    "domain": "sales"
+}
+
+
+###Delete the manager by id
+DELETE {{baseURL}}/managers/mgr12345
+
+###PUT to update the manager Details
+PUT {{baseURL}}/managers/mgr12345 
+Content-Type: application/json
+
+{
+    "email": "guru@example.com",
+    "password": "securePass",
+    "username": "guru_pruthvi",
+    "domain": "operations"
+}

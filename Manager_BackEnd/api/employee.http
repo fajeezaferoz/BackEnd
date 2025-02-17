@@ -1,0 +1,54 @@
+@baseURL = https://localhost:5000/api
+
+### GET all employees
+GET {{baseURL}}/employees
+
+### GET an employee by ID
+GET {{baseURL}}/employees/EMP002
+
+### GET an employee with INVALID ID
+GET {{baseURL}}/employees/INVALID_ID
+
+### POST a new employee
+POST {{baseURL}}/employees
+Content-Type: application/json
+
+{
+    "name": "Nirmala",
+    "managerId": "guru_pruthvi",
+    "designation": "Software Engineer",
+    "department": "Engineering",
+    "email": "nirmala@example.com",
+    "phoneNo": "1536987266",
+    "password": "securePassword123"
+}
+
+
+
+
+
+### POST a new Different Employee
+POST {{baseURL}}/employees
+Content-Type: application/json
+
+{
+    "name": "Mahesh Gupta",
+    "managerId": "guru_pruthvi",
+    "designation": "Software Engineer",
+    "department": "Engineering",
+    "email": "mahesh@example.com",
+    "phoneNo": "1536987267",
+    "password": "securePassword123"
+}
+
+
+### Delete the employee by ID
+DELETE {{baseURL}}/employees/EMP002
+
+### PUT to update the employee Details
+PUT {{baseURL}}/employees/EMP001
+Content-Type: application/json
+
+{
+    "EMPLOYEE_TAKEHOME": 60000
+}

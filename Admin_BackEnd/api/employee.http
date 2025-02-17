@@ -1,0 +1,65 @@
+@baseURL = https://localhost:6000/api
+
+### GET all employees
+GET {{baseURL}}/employees
+
+### GET an employee by ID
+GET {{baseURL}}/employees/EMP002
+
+### GET an employee with INVALID ID
+GET {{baseURL}}/employees/INVALID_ID
+
+### POST a new employee
+POST {{baseURL}}/employees
+Content-Type: application/json
+
+{
+    "EMPLOYEE_ID": "EMP001",
+    "EMPLOYEE_MANAGERID": "MGR001",
+    "EMPLOYEE_FIRSTNAME": "John",
+    "EMPLOYEE_LASTNAME": "Doe",
+    "EMPLOYEE_DESIGNATION": "Software Engineer",
+    "EMPLOYEE_DEPARTMENT": "Engineering",
+    "EMPLOYEE_GENDER": "MALE",
+    "EMPLOYEE_DATEOFBIRTH": "1990-05-15",
+    "EMPLOYEE_DATEOFJOINING": "2021-01-10",
+    "EMPLOYEE_TAKEHOME": 50000,
+    "EMPLOYEE_EMAIL": "john.doe@example.com",
+    "EMPLOYEE_PHONENO": "9876543210",
+    "EMPLOYEE_PASSWORD": "securePassword123"
+}
+
+
+
+
+### POST a new Different Employee
+POST {{baseURL}}/employees
+Content-Type: application/json
+
+{
+    "EMPLOYEE_ID": "EMP002",
+    "EMPLOYEE_MANAGERID": "MGR001",
+    "EMPLOYEE_FIRSTNAME": "Jane",
+    "EMPLOYEE_LASTNAME": "Smith",
+    "EMPLOYEE_DESIGNATION": "Project Manager",
+    "EMPLOYEE_DEPARTMENT": "Operations",
+    "EMPLOYEE_GENDER": "FEMALE",
+    "EMPLOYEE_DATEOFBIRTH": "1985-08-22",
+    "EMPLOYEE_DATEOFJOINING": "2018-06-12",
+    "EMPLOYEE_TAKEHOME": 70000,
+    "EMPLOYEE_EMAIL": "jane.smith@example.com",
+    "EMPLOYEE_PHONENO": "9988776655",
+    "EMPLOYEE_PASSWORD": "securePassword456"
+}
+
+
+### Delete the employee by ID
+DELETE {{baseURL}}/employees/EMP002
+
+### PUT to update the employee Details
+PUT {{baseURL}}/employees/EMP001
+Content-Type: application/json
+
+{
+    "EMPLOYEE_TAKEHOME": 60000
+}

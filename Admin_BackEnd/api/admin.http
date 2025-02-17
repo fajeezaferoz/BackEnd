@@ -1,0 +1,53 @@
+@baseURL = https://localhost:6000/api
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTQ5OTQzNiwiZXhwIjoxNzM5NTAzMDM2LCJjbGFpbXMiOnsibmFtZSI6IlNwb29ydGhpIEcgUyIsImVtYWlsIjoic3Bvb3J0aGlAZ21haWwuY29tIiwicm9sZXMiOlsiYWRtaW4iXX19.Dk9Kqk13ZYIznyatpkhOFtjnVjEClHIkljYzK-FDulNqHdtBONJyOsJd23iU5JB7uSeVmaHBHjnEKLYVLtPqAV324JpkgDVXpEhb7nEohZ1Chn-7cpaW4Z7UTh3G1esFGFOothESiNY-qfaX4CjvM3WjkH28Wdp-XgPTWidO_tIaRAHXtUCjKJzxn0nQsKAx4-yIDFHCv43QQBThseBk_40-YOvBeiaGjucNpFuEyer0QVHdPsOKvopD2JFmi9R7bLOGCrU277-Nlv95jSZbSUmE_ESXJq8l1VTSoWefS1PxETgJWJ2psWXU8qD0BbN5Iton9ui4Zkeu7DFFRrIaeQ
+### GET all admins
+GET {{baseURL}}/admins
+Authorization: BEARER {{token}}
+
+### GET an admin by ID
+GET {{baseURL}}/admins/admin12345
+
+### GET an admin with INVALID ID
+GET {{baseURL}}/admins/INVALID_ID
+
+### POST a new admin
+POST {{baseURL}}/admins
+Content-Type: application/json
+
+{
+    "Admin_ID": "admin12345",
+    "email": "guru@example.com",
+    "password": "securePass123",
+    "username": "guru_pruthvi",
+    "phone_Number": "9876543210",
+    "name": "Guru Pruthvi",
+    "department": "finance"
+}
+
+### POST a new admin
+POST {{baseURL}}/admins 
+Content-Type: application/json
+
+{
+    "Admin_ID": "admin67890",
+    "email": "pruthvi@example.com",
+    "password": "securePass456",
+    "username": "pruthvi-guru",
+    "phone_Number": "9999999999",
+    "name": "Pruthvi Guru",
+    "department": "sales"
+}
+
+### DELETE the admin by ID
+DELETE {{baseURL}}/admins/admin12345
+
+### PUT to update the admin details
+PUT {{baseURL}}/admins/admin12345 
+Content-Type: application/json
+
+{
+    "email": "guru@example.com",
+    "password": "securePass",
+    "username": "guru_pruthvi",
+    "department": "operations"
+}

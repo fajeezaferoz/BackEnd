@@ -1,0 +1,106 @@
+@baseURL = https://localhost/api
+
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTc1MTAyOCwiZXhwIjoxNzM5NzU0NjI4LCJjbGFpbXMiOnsibmFtZSI6IlByYW5hdGhpIiwiZW1haWwiOiJwcmFuYUBleGFtcGxlLmNvbSIsInJvbGVzIjpbImN1c3RvbWVyIl19fQ.coXc2_iOuzluJdLJjnECpKs9SdEfi1FkpiaFPdl34VS7QSZt8xvVOc6fZ5LmCOIJZifF63mZQEtJh12r7jZny6yhbaylu00Vm5o_sr0lB1AumxOskovmrqo6yHrrl82VbuvZJTZuv8TiqHj_tVGDPhdnTQ_U73k00gXig4WxOh0EM3JnDF956F1ErLlKnJzfpL1pes5A7tn6O1smYXzm_50lGKCcjc41UOunZrQcuQjpjE8v9WPa4ygX7rVF_12vLHK_X-PULHIWofDIFWOEqNTBx7IxGZeK1fNuORhzTJX-EMtUwt40DdbRQBs61cjeH2ftMrSK6BqoKWejrxAUag
+### GET all customers
+GET {{baseURL}}/customers
+Authorization: BEARER {{token}}
+
+### GET a customer by ID
+GET {{baseURL}}/customers/guru-pruthvi
+
+### GET a payment by particular customer
+GET {{baseURL}}/customers/guru-pruthvi/payments
+Authorization: BEARER {{token}}
+
+### POST a payment by particular customer
+POST {{baseURL}}/customers/guru-pruthvi/payments
+Content-Type: application/json
+
+{
+    "amount": 50000,
+    "department": "finance"
+}
+
+### GET a ticket raised by a customer
+GET {{baseURL}}/customers/guru-pruthvi/tickets
+Authorization: BEARER {{token}}
+
+### POST a ticket raised by a customer
+POST  {{baseURL}}/customers/guru-pruthvi/tickets
+Content-Type: application/json
+
+{
+    "ticketId": "TICKET123",
+    "employeeId": "EMP001",
+    "ticketType": "Technical Issue",
+    "ticketDescription": "Unable to access the dashboard.",
+    "ticketStatus": "PENDING",
+    "ticketPriority": "HIGH"
+}
+
+
+### GET a customer with INVALID ID
+GET {{baseURL}}/customers/INVALID_ID
+
+### POST a new customer
+POST {{baseURL}}/customers
+Content-Type: application/json
+
+{
+    "email": "guru@example.com",
+    "password": "securePass123",
+    "username": "guru pruthvi",
+    "phone_Number": "9876543210",
+    "name": "Guru Pruthvi"
+}
+
+### POST a new Different Customer
+POST {{baseURL}}/customers
+Content-Type: application/json
+
+{
+    "email": "pruthvi@example.com",
+    "password": "securePass456",
+    "username": "pruthvi-guru",
+    "phone_Number": "9999999999",
+    "name": "Pruthvi Guru"
+}
+
+
+### Delete the customer by id
+DELETE {{baseURL}}/customers/guru-pruthvi
+
+
+### PUT to update the customer Details
+PUT {{baseURL}}/customers/guru-pruthvi
+Content-Type: application/json
+
+{
+    "email": "guru@example.com",
+    "password": "securePass",
+    "username": "guru pruthvi"
+}
+
+### POST a new Raise Ticket by particular ticket
+
+POST {{baseURL}}/customers/guru-pruthvi/tickets
+Authorization: BEARER eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTYwMjk4NywiZXhwIjoxNzM5NjA2NTg3LCJjbGFpbXMiOnsibmFtZSI6IlByYW5hdGhpIiwiZW1haWwiOiJwcmFuYUBleGFtcGxlLmNvbSIsInJvbGVzIjpbImN1c3RvbWVyIl19fQ.Cv_ZICYp_neHZOG_dqPdE4BAzvzK_OQUz_VelDOsqWsqHuzM9yCYkXhSwdwT3dU9n63RONdNprH19meJ9HFDQPOPG2_e7OpR0im7goU7pe6CvteMsfHaYGFLyIi5a7qQmIZPdEKXB0H93vD7Bnb77XPFUcgN5xa1fqRVggN5Zkn8PF7D7Nxyc0vygU8ErV-QRNTrUzGh-DDERdeLpztxOFJGw1H0KP5h_x47gwzWWULrUWpW37INLwuawnrIVXgYQPsLQ5vYquXrOtmS7u9BuwGJ6tW6tHJ3SZuCsfOfbcmFLiNfEBkIYTSQyU51pc5NEzAHDZDm2B2_6TRkNfdh3Q
+Content-Type: application/json
+
+{
+    "ticketType": "Technical Issue",
+    "ticketDescription": "Unable to access the dashboard.",
+    "department": "finance"
+}
+
+### POST a new Payment
+
+POST {{baseURL}}/customers/guru-pruthvi/payments
+Authorization: BEARER {{token}}
+Content-Type: application/json
+
+{
+    "amount": 500,
+    "paymentType": "GPay",
+    "department": "jio"
+}

@@ -1,0 +1,54 @@
+@baseURL = https://localhost:7000/api
+@token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTQ2OTY3MCwiZXhwIjoxNzM5NDczMjcwLCJjbGFpbXMiOnsibmFtZSI6IlNwb29ydGhpIEcgUyIsImVtYWlsIjoic3Bvb3J0aGlAZ21haWwuY29tIiwicm9sZXMiOlsiYWRtaW4iXX19.muasEzuZEvHBgFffqm2Jl3V_c0xQJJPw9OMsnXTw39bnqVE4u5cC3OTAJNhkJQuY0huITAiTnY5nRMG6rg8kkh-NrEFK64K6Aha2xRkLcytUNY2K8wOwSxhaT-xH32LS58yNoT2-Bjrh32z-TxO6-0kdUJGIRaJwOZTGEWzrab3n7b_3Z0otcxmJGW8Od7fBLg5Z2ne6RitHsrUMwXmqegizaDur6lx_cHxGQ1MEgZ5q6bmgncfj7-vhcIcuXTYORl6dkTiQRuBtkF8jivnJQVkaV9n3cnk_SIS4MxT3fQp1m5vkl_uxgpdaTXB_7BHP3i3ylgdQ-EDZKCECNpACUw
+
+
+### GET all tickets
+GET {{baseURL}}/tickets
+Authorization: BEARER {{token}}
+### GET a ticket by ID
+GET {{baseURL}}/tickets/TICKET123
+
+### GET a ticket with INVALID ID
+GET {{baseURL}}/tickets/INVALID_ID
+
+### POST a new ticket
+POST {{baseURL}}/tickets
+Content-Type: application/json
+
+{
+    "ticketId": "TICKET123",
+    "customerId": "guru-pruthvi",
+    "employeeId": "EMP001",
+    "ticketType": "Technical Issue",
+    "ticketDescription": "Unable to access the dashboard.",
+    "ticketStatus": "PENDING",
+    "ticketPriority": "HIGH"
+}
+
+### POST a new different ticket
+POST {{baseURL}}/tickets
+Content-Type: application/json
+
+{
+    "ticketId": "TICKET456",
+    "customerId": "pruthvi-guru",
+    "employeeId": "EMP002",
+    "ticketType": "Billing Issue",
+    "ticketDescription": "Incorrect billing amount for last month.",
+    "ticketStatus": "OPEN",
+    "ticketPriority": "MEDIUM"
+}
+
+### DELETE the ticket by ID
+DELETE {{baseURL}}/tickets/TICKET123
+
+### PUT to update the ticket details
+PUT {{baseURL}}/tickets/TICKET123
+Content-Type: application/json
+
+{
+    "ticketType": "Technical Issue",
+    "ticketDescription": "Issue resolved, system is now accessible.",
+    "ticketStatus": "CLOSED",
+    "ticketPriority": "LOW"
+}

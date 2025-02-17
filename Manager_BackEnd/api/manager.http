@@ -1,0 +1,72 @@
+@baseURL = https://localhost:5000/api
+
+###GET all managers
+GET {{baseURL}}/managers
+
+### GET a manager by ID
+GET {{baseURL}}/managers/mgr12345
+
+###GET a manager with INVALID ID
+GET {{baseURL}}/managers/INVALID_ID
+
+### GET Specified ManagerId ticketStatus
+GET {{baseURL}}/managers/guru_pruthvi/ticketStatus
+
+### Get Specified TicketStatus of specified Manager
+GET {{baseURL}}/managers/guru_pruthvi/ticketStatus/closed
+
+### Get Specified TicketStatus of specified Manager with specified ticketId
+GET {{baseURL}}/managers/guru_pruthvi/ticketStatus/pending/TICKET567
+
+### Get the specified Manager ticket count of their collegues
+
+GET {{baseURL}}/managers/guru_pruthvi/collegue/ticketCount
+
+
+### GET all Employee under manager
+GET {{baseURL}}/managers/guru_pruthvi/collegue
+
+### GET specific Employee under manager
+GET {{baseURL}}/managers/guru_pruthvi/collegue/mahesh-gupta
+
+### POST a new manager
+POST {{baseURL}}/managers
+Content-Type: application/json
+
+{
+    "email": "guru@gmail.com",
+    "password": "securePass123",
+    "username": "guru prasad",
+    "phone_Number": "9886828769",
+    "name": "Guru Prasad",
+    "department": "operation"
+}
+
+### POST a new manager
+POST {{baseURL}}/managers 
+Content-Type: application/json
+
+{
+    "Manager_ID": "manager-102",
+    "email": "pruthvi@example.com",
+    "password": "securePass456",
+    "username": "pruthvi-guru",
+    "phone_Number": "9999999999",
+    "name": "Pruthvi Guru",
+    "department": "sales"
+}
+
+
+###Delete the manager by id
+DELETE {{baseURL}}/managers/mgr12345
+
+###PUT to update the manager Details
+PUT {{baseURL}}/managers/mgr12345 
+Content-Type: application/json
+
+{
+    "email": "guru@example.com",
+    "password": "securePass",
+    "username": "guru_pruthvi",
+    "domain": "operations"
+}

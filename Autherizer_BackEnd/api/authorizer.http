@@ -1,0 +1,63 @@
+@baseURL = https://localhost:7000/api
+
+# @name loginAuth
+POST {{baseURL}}/authorizers/login
+Content-Type: application/json
+
+{
+    "email": "abhi@example.com",
+    "password": "securePassword123"
+}
+
+###
+@token = {{loginAuth.response.body.token}}
+
+### GET all authorizers
+GET {{baseURL}}/authorizers
+Authorization: BEARER {{token}}
+
+### GET an authorizer by ID
+GET {{baseURL}}/authorizers/john-doe
+Authorization: BEARER {{token}}
+
+### GET an authorizer with INVALID ID
+GET {{baseURL}}/authorizers/INVALID_ID
+
+### POST a new authorizer
+POST {{baseURL}}/authorizers
+Content-Type: application/json
+
+{
+    "name": "Abhi KM Sheety",
+    "username": "abhi km",
+    "password": "securePassword123",
+    "email": "abhi@example.com",
+    "phone_Number": "9756832145",
+    "roles": ["authorizer"]
+  }
+
+### POST a new authorizer
+POST {{baseURL}}/authorizers
+Content-Type: application/json
+
+{
+    "Authorizer_ID": "jane-smith",
+    "name": "Jane Smith",
+    "username": "jane_smith",
+    "password": "anotherSecurePass456",
+    "email": "jane.smith@example.com",
+    "phone_Number": "9998887776"
+}
+
+### DELETE the authorizer by ID
+DELETE {{baseURL}}/authorizers/john-doe
+Authorization: BEARER {{token}}
+
+### PUT to update the authorizer details
+PUT {{baseURL}}/authorizers/john-doe
+Authorization: BEARER {{token}}
+Content-Type: application/json
+
+{
+    "email": "auth1@example.com"
+}

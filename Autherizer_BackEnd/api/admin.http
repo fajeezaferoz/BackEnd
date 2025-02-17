@@ -1,0 +1,71 @@
+@baseURL = https://localhost:7000/api
+
+###Login User
+# @name loginAdmin
+POST {{baseURL}}/admins/login
+Content-Type: application/json
+
+{
+    "email": "spoorthi@gmail.com",
+    "password": "securePass123"
+}
+###
+@token = {{loginAdmin.response.body.token}}
+
+### GET all admins
+GET {{baseURL}}/admins
+Authorization: BEARER {{token}}
+
+
+### GET an admin by ID
+GET {{baseURL}}/admins/admin12345
+Authorization: BEARER {{token}}
+
+
+### GET an admin with INVALID ID
+GET {{baseURL}}/admins/INVALID_ID
+Authorization: BEARER {{token}}
+
+
+### POST a new admin
+POST {{baseURL}}/admins
+Content-Type: application/json
+
+{
+    "email": "spoorthi@gmail.com",
+    "password": "securePass123",
+    "username": "spoorthi gs",
+    "phone_Number": "9019867892",
+    "name": "Spoorthi G S",
+    "department": "operator"
+}
+
+### POST a new admin
+POST {{baseURL}}/admins 
+Content-Type: application/json
+
+{
+    "Admin_ID": "admin67890",
+    "email": "pruthvi@example.com",
+    "password": "securePass456",
+    "username": "pruthvi-guru",
+    "phone_Number": "9999999999",
+    "name": "Pruthvi Guru",
+    "department": "sales"
+}
+
+### DELETE the admin by ID
+DELETE {{baseURL}}/admins/admin12345
+Authorization: BEARER {{token}}
+
+
+### PUT to update the admin details
+PUT {{baseURL}}/admins/admin12345 
+Authorization: BEARER {{token}}
+Content-Type: application/json
+
+{
+    "email": "guru@gmail.com",
+    "password": "secure Pass",
+    "department": "operation"
+}

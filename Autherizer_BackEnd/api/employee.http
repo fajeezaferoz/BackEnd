@@ -1,0 +1,74 @@
+@baseURL = https://localhost:7000/api
+
+# @name loginEmployee
+POST {{baseURL}}/employees/login
+Content-Type: application/json
+
+{
+    "email": "johndoe@example.com",
+    "password": "hashedpassword123"
+}
+
+###
+@token = {{loginEmployee.response.body.token}}
+
+### GET all employees
+GET {{baseURL}}/employees
+Authorization: BEARER {{token}}
+
+### GET an employee by ID
+GET {{baseURL}}/employees/jane-smith
+Authorization: BEARER {{token}}
+
+
+### GET an employee with INVALID ID
+GET {{baseURL}}/employees/INVALID_ID
+
+### POST a new employee
+POST {{baseURL}}/employees
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "managerId": "MGR123",
+    "designation": "Software Engineer",
+    "department": "IT",
+    "email": "johndoe@example.com",
+    "phoneNo": "1234567890",
+    "password": "hashedpassword123"
+}
+
+
+
+
+### POST a new Different Employee
+POST {{baseURL}}/employees
+Content-Type: application/json
+
+{
+    "EMPLOYEE_ID": "EMP002",
+    "EMPLOYEE_MANAGERID": "MGR001",
+    "EMPLOYEE_FIRSTNAME": "Jane",
+    "EMPLOYEE_LASTNAME": "Smith",
+    "EMPLOYEE_DESIGNATION": "Project Manager",
+    "EMPLOYEE_DEPARTMENT": "Operations",
+    "EMPLOYEE_GENDER": "FEMALE",
+    "EMPLOYEE_DATEOFBIRTH": "1985-08-22",
+    "EMPLOYEE_DATEOFJOINING": "2018-06-12",
+    "EMPLOYEE_TAKEHOME": 70000,
+    "EMPLOYEE_EMAIL": "jane.smith@example.com",
+    "EMPLOYEE_PHONENO": "9988776655",
+    "EMPLOYEE_PASSWORD": "securePassword456"
+}
+
+
+### Delete the employee by ID
+DELETE {{baseURL}}/employees/EMP002
+
+### PUT to update the employee Details
+PUT {{baseURL}}/employees/jane-smith
+Content-Type: application/json
+
+{
+    "EMPLOYEE_TAKEHOME": 60000
+}
