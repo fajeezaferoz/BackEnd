@@ -66,7 +66,7 @@ class MongooseTicketRepository extends MongooseRepository {
                         ticketRaiseDate: 1,
                         ticketStatus: 1,
                         ticketPriority: 1,
-                        assignedEmployee: '$employeeDetails.name'
+                        employeeId: '$employeeDetails.name'
                     }
                 }
             ]);
