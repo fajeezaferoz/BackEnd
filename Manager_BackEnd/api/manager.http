@@ -1,5 +1,8 @@
 @baseURL = https://localhost:5000/api
 
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTg1NDkzMywiZXhwIjoxNzM5ODU4NTMzLCJjbGFpbXMiOnsibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZXMiOlsibWFuYWdlciJdfX0.OjePDBrc7dgi1tlntCw7zXrYphVOXWS8XDDaNaEaMKnW1_rDNYWn0dVmNyfmz8dtj-o7ZYJwQixVqIu9xWAjQ7GaIzn9wQ1TfawMvsXZ6LXqxZxwWMkJ8lHRRFl4ZP1ilE-G6XK5nh_9GKksWK-4gNeYWIzYajva82YPoe51-o1BrZl6MpNyL1xI8hfzT5KSANhDwuElAsPgbnMw2KcYVxkeT9M0h8USCAd7zcUlFwNcM65BoXSvom1b74D90XKYr0YbL9apxMT7gnSNNwYtYw3PyX83hZDXgIEn6mOKK_YU8E6qtJ9XJ1u9SUuu3YBYNsNAAWziUKIFqzWkWd3ytQ
+
+
 ###GET all managers
 GET {{baseURL}}/managers
 
@@ -10,7 +13,8 @@ GET {{baseURL}}/managers/mgr12345
 GET {{baseURL}}/managers/INVALID_ID
 
 ### GET Specified ManagerId ticketStatus
-GET {{baseURL}}/managers/guru_pruthvi/ticketStatus
+GET {{baseURL}}/managers/johndoe/ticketStatus
+Authorization: BEARER {{token}}
 
 ### Get Specified TicketStatus of specified Manager
 GET {{baseURL}}/managers/guru_pruthvi/ticketStatus/closed

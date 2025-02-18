@@ -33,7 +33,7 @@ class AdminService {
     }
 
     _userInfo(user){
-        return {name:user.name, email:user.email, roles:user.roles}
+        return {name:user.name, email:user.email, roles:user.roles, userName: user.Admin_ID}
     }
 
     async deleteAdmin(id) {

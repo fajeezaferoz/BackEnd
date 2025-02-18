@@ -37,7 +37,7 @@ class ManagerService {
     }
 
     _userInfo(user){
-        return {name:user.name, email:user.email, roles: user.roles}
+        return {name:user.name, email:user.email, roles: user.roles, userName: user.Manager_ID}
     }
 }
 

@@ -29,6 +29,10 @@ const createRouter = () => {
         .get(authorize('employee'), routeHandler(ticketControll.getEmployeeSpecificId))
         .put(authorize('employee'), routeHandler(ticketControll.updateTicket))
 
+    router
+        .route('/:id/collegue')
+        .get(authorize('employee'), routeHandler(employeeControll.getCollegue))
+
     return router;
 }
 

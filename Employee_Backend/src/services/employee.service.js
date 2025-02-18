@@ -22,6 +22,13 @@ class EmployeeService {
     async deleteEmployee(id) {
         return await this.employeeRepository.remove({ employeeId: id });
     }
+
+    async getCollegues(id){
+        const employee = await this.employeeRepository.findOne({ employeeId: id});
+        if(!employee)
+            throw new Error('Employee not found');
+        return await this.employeeRepository.findAll({ managerId: employee.managerId });
+    }
 }
 
 EmployeeService._dependencies = ['employeeRepository'];
