@@ -37,7 +37,9 @@ class ManagerService {
     }
 
     _userInfo(user){
-        return {name:user.name, email:user.email, roles: user.roles, userName: user.Manager_ID}
+        console.log(user);
+        
+        return {name:user.name, email:user.email, roles: user.roles, userName: user.managerId}
     }
 }
 
