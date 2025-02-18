@@ -54,37 +54,23 @@ class TicketService {
 
     async createTicket(ticket) { 
         try {
-            console.log("Fetching managers...");
             const allManagers = await axios.get('https://localhost:5000/api/managers', { httpsAgent, headers });
-            console.log("Managers Response:", allManagers.data);
-
             const manager = allManagers.data.find(manager => manager.department === ticket.department);
             if (!manager) {
-                console.error("No manager found for department:", ticket.department);
                 throw new Error('No manager found in the specified department');
             }
-
-            console.log(manager.managerId)
-
-            console.log("Fetching employee ticket count...");
             const employeeTicketCount = await axios.get(
                 `https://localhost:5000/api/managers/${manager.managerId}/collegue/ticketCount`,
                 { httpsAgent, headers }
             );
-            console.log("Employee Ticket Count Response:", employeeTicketCount.data);
 
             if (!employeeTicketCount.data.length) {
-                console.error("No employees found for manager:", manager.managerId);
                 throw new Error('No employees found to assign the ticket');
             }
-
             employeeTicketCount.data.sort((a, b) => a.ticketCount - b.ticketCount);
             ticket.employeeId = employeeTicketCount.data[0]._id;
-
-            console.log("Creating ticket:", ticket);
             return await this.ticketRepository.create(ticket);
         } catch (error) {
-            console.error("Error in createTicket:", error.message);
             throw error;
         }
     }

@@ -6,8 +6,6 @@ class MongooseTicketRepository extends MongooseRepository{
     }
 
     async getTicketByEmpId(matcher = {}) {
-        console.log(matcher); // matcher= {customerId: "guru-pruthvi"}
-
         return this.model.find(matcher)
         .populate({ 
             path: 'employeeId',

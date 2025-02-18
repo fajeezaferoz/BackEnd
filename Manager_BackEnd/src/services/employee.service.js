@@ -9,7 +9,7 @@ class EmployeeService {
 
     async getEmployeeById(id) {
         return await this.employeeRepository.findOne({ employeeId: id });
-    }
+    } 
 
     async createEmployee(employee) {
         return await this.employeeRepository.create(employee);

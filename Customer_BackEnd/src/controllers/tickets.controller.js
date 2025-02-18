@@ -14,8 +14,6 @@ const ticketController = () => {
     const addTicket = async ({ id, body }) => {
         if(id){
             body={...body, customerId: id};
-            console.log(body);
-            
         }
         return await ticketService.createTicket(body);
     };
