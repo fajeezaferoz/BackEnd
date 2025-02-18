@@ -29,6 +29,12 @@ class EmployeeService {
             throw new Error('Employee not found');
         return await this.employeeRepository.findAll({ managerId: employee.managerId });
     }
+
+    async getStats(id){
+        const employee = await this.employeeRepository.findOne({ employeeId: id});
+        if(!employee)
+            throw new Error('Employee not found');
+    }
 }
 
 EmployeeService._dependencies = ['employeeRepository'];

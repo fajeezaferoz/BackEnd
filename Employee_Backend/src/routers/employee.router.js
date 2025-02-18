@@ -33,6 +33,11 @@ const createRouter = () => {
         .route('/:id/collegue')
         .get(authorize('employee'), routeHandler(employeeControll.getCollegue))
 
+    // Avg resolution time and response time
+    router
+        .route('/:id/stats')
+        .get(authorize('employee'), routeHandler(employeeControll.getStats));
+
     return router;
 }
 

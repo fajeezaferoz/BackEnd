@@ -27,6 +27,10 @@ const employeeController = () => {
         return await employeeService.getCollegues(id)
     }
 
+    const getStats = async ({id}) => {
+        return await employeeService.getStats(id)
+    }
+
     return {
         getAllEmployees,
         getEmployeeById,
@@ -34,6 +38,7 @@ const employeeController = () => {
         updateEmployee,
         deleteEmployee,
         getCollegue,
+        getStats,
     }
 }
 

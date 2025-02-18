@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); 
 
 const ticketSchema = new mongoose.Schema({
   ticketId: { 
@@ -16,9 +16,19 @@ const ticketSchema = new mongoose.Schema({
   ticketRaiseDate: { type: Date, required: true, default: Date.now}, 
   ticketStatus: { type: String, required: true, enum: ['PENDING', 'OPEN', 'CLOSED'], default: 'OPEN'},
   department: { type: String, required: true},
+  ticketStatusHistory: [{
+    status: { type: String, enum: ['PENDING', 'OPEN', 'CLOSED'], required: true },
+    changedAt: { type: Date, default: Date.now }
+  }]
 });
 
-
+// Middleware to track status changes
+ticketSchema.pre('save', function (next) {
+  if (this.isModified('ticketStatus')) {
+    this.ticketStatusHistory.push({ status: this.ticketStatus, changedAt: new Date() });
+  }
+  next();
+});
 
 const Ticket = mongoose.model('Ticket', ticketSchema, 'tickets');
 

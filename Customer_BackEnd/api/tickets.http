@@ -4,7 +4,7 @@
 GET {{baseURL}}/tickets
 
 ### GET a ticket by ID
-GET {{baseURL}}/tickets/TICKET123
+GET {{baseURL}}/tickets/guru-pruthvi-1739900815798
 
 ### GET a ticket with INVALID ID
 GET {{baseURL}}/tickets/INVALID_ID
@@ -14,12 +14,11 @@ POST {{baseURL}}/tickets
 Content-Type: application/json
 
 {
-    "ticketId": "TICKET123",
     "customerId": "guru-pruthvi",
     "ticketType": "Technical Issue",
     "ticketDescription": "Unable to access the dashboard.",
     "ticketStatus": "PENDING",
-    "domain": "Data&AI"
+    "department": "finance"
 }
 
 ### POST a new different ticket
@@ -40,12 +39,9 @@ Content-Type: application/json
 DELETE {{baseURL}}/tickets/TICKET123
 
 ### PUT to update the ticket details
-PUT {{baseURL}}/tickets/TICKET123
+PUT {{baseURL}}/tickets/guru-pruthvi-1739900815798
 Content-Type: application/json
 
 {
-    "ticketType": "Technical Issue",
-    "ticketDescription": "Issue resolved, system is now accessible.",
-    "ticketStatus": "CLOSED",
-    "ticketPriority": "LOW"
+    "ticketStatus": "CLOSED"
 }

@@ -29,7 +29,8 @@ function isTokenValid(token) {
 }
 
 // Replace this with a valid token from your authentication system
-const token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTYwMjk4NywiZXhwIjoxNzM5NjA2NTg3LCJjbGFpbXMiOnsibmFtZSI6IlByYW5hdGhpIiwiZW1haWwiOiJwcmFuYUBleGFtcGxlLmNvbSIsInJvbGVzIjpbImN1c3RvbWVyIl19fQ.Cv_ZICYp_neHZOG_dqPdE4BAzvzK_OQUz_VelDOsqWsqHuzM9yCYkXhSwdwT3dU9n63RONdNprH19meJ9HFDQPOPG2_e7OpR0im7goU7pe6CvteMsfHaYGFLyIi5a7qQmIZPdEKXB0H93vD7Bnb77XPFUcgN5xa1fqRVggN5Zkn8PF7D7Nxyc0vygU8ErV-QRNTrUzGh-DDERdeLpztxOFJGw1H0KP5h_x47gwzWWULrUWpW37INLwuawnrIVXgYQPsLQ5vYquXrOtmS7u9BuwGJ6tW6tHJ3SZuCsfOfbcmFLiNfEBkIYTSQyU51pc5NEzAHDZDm2B2_6TRkNfdh3Q"
+const token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTkwMDc1MywiZXhwIjoxNzM5OTA0MzUzLCJjbGFpbXMiOnsibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZXMiOlsibWFuYWdlciJdLCJ1c2VyTmFtZSI6ImpvaG5kb2UifX0.iJ-jUEg6XGOrW7e1irvvVIc3gbAhGl4tvQokMhL4I2Jww__irK0RMLzjkkVMTOGufCIbXTNNE7PvlET0CWRY6IryNUO-3TR0sw6YvEU9pEZSpByUXGEZN14WdcLln96h9utImK8XxkY0v1TkZzpFTIFsLvdg79umVZ5TmJLyjt8aRuuWSRztAqM3rJ-HEDqY4bx3Hxk3UzxoMwbJIP00SAfgrqaKHKIMqsdp8w4CBUEaZ0NuN5y3Wl5hpcIEFW8sjW-VJAnyQ11HWLX8ASyrw0ARSbAZV_8blzLCm2SmGhwfYAcow66ZpH-dTYkS_cLMugAMcWPmZCHtifJd192xmg"
+ 
 // Validate the JWT token before making any API requests
 
 
@@ -76,6 +77,12 @@ class TicketService {
     }
 
     async updateTicket(id, ticketData) {
+        const ticket = await this.ticketRepository.findOne({ticketId: id})
+        if (!ticket) {
+            throw new Error('Ticket not found');
+        }
+        if(ticketData.ticketStatus && ticket.ticketStatus!==ticketData.ticketStatus) 
+            ticketData.ticketStatusHistory=ticket.ticketStatusHistory.concat({ status: ticketData.ticketStatus, changedAt: new Date() });
         return await this.ticketRepository.update({ ticketId: id }, ticketData);
     }
 
