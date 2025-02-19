@@ -53,8 +53,6 @@ class ManagerService {
         const numOfEmployees=getAllEmployeeUnderManager.length
         let avgResolutionTime=resolutionTime/numOfEmployees
         let avgResponseTime=responseTime/numOfEmployees
-        console.log(responseTime, resolutionTime);
-        
         manager.avgResolutionTime=avgResolutionTime
         manager.avgResponseTime=avgResponseTime
         await this.updateManager(id, manager)

@@ -6,10 +6,13 @@ const customerSchema = new mongoose.Schema({
   phone_Number: { type: String, required: true, unique: true }, 
   username: { type: String, unique: true, required: true}, 
   password: { type: String, required: true }, 
-  email: { type: String, unique: true, required: true}
+  email: { type: String, unique: true, required: true},
+  roles: {type: Array, required: true, default: ['customer']},
+  address: {type: String, required: true},
+  pinCode: {type: Number, required: true}
 }, {timestamps: true}); 
 
-customerSchema.pre('save', function(next) { 
+customerSchema.pre('save', function(next) {
   if (!this.customerID) {
     this.customerID = this.username.toLowerCase().replace(/\s+/g, '-');
   }
