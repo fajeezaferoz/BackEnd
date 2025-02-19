@@ -19,7 +19,9 @@ const ticketSchema = new mongoose.Schema({
   ticketStatusHistory: [{
     status: { type: String, enum: ['PENDING', 'OPEN', 'CLOSED'], required: true },
     changedAt: { type: Date, default: Date.now }
-  }]
+  }],
+  latitude: { type: Number }, // Store the latitude
+  longitude: { type: Number }, // Store the longitude
 },{ timestamps: true });
 
 // Middleware to track status changes

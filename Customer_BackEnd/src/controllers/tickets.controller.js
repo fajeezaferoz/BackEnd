@@ -11,11 +11,12 @@ const ticketController = () => {
         return await ticketService.getTicketById(id);
     };
 
-    const addTicket = async ({ id, body }) => {
+    const addTicket = async ({ id, body, request }) => {
+        const token = request.headers['authorization']?.split(' ')[1]
         if(id){
             body={...body, customerId: id};
         }
-        return await ticketService.createTicket(body);
+        return await ticketService.createTicket(body, token);
     };
 
     const updateTicket = async ({ body, id }) => {

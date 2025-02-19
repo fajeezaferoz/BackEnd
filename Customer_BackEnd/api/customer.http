@@ -1,6 +1,6 @@
 @baseURL = https://localhost/api
 
-@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTk0MDA1OCwiZXhwIjoxNzM5OTQzNjU4LCJjbGFpbXMiOnsibmFtZSI6IlByYW5hdGhpIiwiZW1haWwiOiJwcmFuYUBleGFtcGxlLmNvbSIsInJvbGVzIjpbImN1c3RvbWVyIl0sInVzZXJOYW1lIjoicHJhbmEifX0.Exp8KTe4DPom_EpUh4RXQ9giOau5H-R6_yt5Jug7wO7Bp7KKKKNZFBReAOz6VYdeCaVLlB49vRb2iPFoxrc50YCL_W7b0OW-SzN0CUBvk1n2yjSosYeVzREGPDai8fyp2UGn-CcTfh86mGXgsqVZDMdRzx-o4qIUUdtUsdu_-UIn4ipMVDADz-DYbck6naHm4l2S2lcrlYjCOm-Y89Z511cajdgdolJMgc_PDFDXT9vWIy_txMLsz7vDF_whGcjMk0HHFkcXsvtFQvTMAJKJPq1m4NmQsluP3obbK0tFB_T2eOtryqHCLu-L_HPhgmzS0iTEz6eKMlIlMWLDqryxdQ
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTk1OTc0MiwiZXhwIjoxNzM5OTYzMzQyLCJjbGFpbXMiOnsibmFtZSI6IlByYW5hdGhpIiwiZW1haWwiOiJwcmFuYUBleGFtcGxlLmNvbSIsInJvbGVzIjpbImN1c3RvbWVyIl0sInVzZXJOYW1lIjoicHJhbmEifX0.K60sXHKY1ifUeB6zy8HPLFACjEg669tiOMAAi0NkrxLohsddy_dHD3s_uCL-EFgVMS5ywN42ijmCiqRA5m8N7bh4g4OCwOUskuROtYODhBxa-ZebW2BkMzlE8yGh5l5MxUM9V44qIbQAZ5OtAH04RIRfPw9Ra67GOr7xdLSbwPt7WqDC6D78J71gny-83C4FV3uVF0Gs8W5qksHWMxppniOYepIDt2Vju1Tm4Jlgdr-oX61hYLECzc11uWQMyTykxC7Fo0kv6J_R4rpn961IFgckn-WzoYV5GOknNjlr5z4Xrz06FzuPrWeWNsMqeO6jlaQe9KQUJo9jSdYWuE-NvQ
 
 ### GET all customers
 GET {{baseURL}}/customers
@@ -27,13 +27,14 @@ GET {{baseURL}}/customers/guru-pruthvi/tickets
 Authorization: BEARER {{token}}
 
 ### POST a ticket raised by a customer
-POST  {{baseURL}}/customers/guru-pruthvi/tickets
+POST  {{baseURL}}/customers/jyothish-m-j/tickets
+Authorization: BEARER {{token}}
 Content-Type: application/json
 
 {
     "ticketType": "Technical Issue",
     "ticketDescription": "Unable to pay to buy the discription.",
-    "ticketStatus": "Open",
+    "ticketStatus": "OPEN",
     "department": "finance"
 }
 
