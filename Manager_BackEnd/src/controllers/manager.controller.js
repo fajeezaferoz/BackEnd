@@ -23,8 +23,9 @@ const managerController = () => {
         return await managerService.deleteManager(id);
     };
 
-    const getStatusForManager = async ({ id }) => {
-        return await managerService.getStatusForManager(id);
+    const getStatusForManager = async ({ id, request }) => {
+        const token = request.headers['authorization']?.split(' ')[1]
+        return await managerService.getStatusForManager(id, token);
     }
 
     return {

@@ -75,8 +75,7 @@ class EmployeeService {
         return count > 0 ? (totalResolutionTime / count) : 0;
     }
 
-    async getStats(id){
-        const token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTkyNzM3NywiZXhwIjoxNzM5OTMwOTc3LCJjbGFpbXMiOnsibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZXMiOlsiZW1wbG95ZWUiXSwidXNlck5hbWUiOiJqb2huLWRvZSJ9fQ.XVwVJqEMBOPA9rGx2mbC_62PwWufzAbyCBvGsc_V7uwT0t_frnzjPXm4cPptp7IJa3zKJ9xZ77n9wblVp5AvUlWs3mwizpgkoJjX9RxsICc-r95FPSepJpPnev9DUH3ScWOTx2qumbz47FsX2kBW2o5EIX5TgbGA7KWScAJ1NtCd9qDy9I2VgcUnKZwDs6XyRDG9kjK12-h8mGXSw1lMqoPzSs_aLgnWXGSgvOACJ04JnqmpDln3Xumx7X16byuiMcfFjW7ZWzEM2QxJPOvdLy6xvyQXCjVDVZnNghGZc7kCvziuKOh3quKL6M66o-ZfbHD8mb39ZMjNAYWlAPkOjg"
+    async getStats(id, token){
         const employee = await this.employeeRepository.findOne({ employeeId: id});
         if(!employee)
             throw new Error('Employee not found');

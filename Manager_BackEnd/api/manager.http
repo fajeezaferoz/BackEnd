@@ -23,7 +23,7 @@ Authorization: BEARER {{token}}
 
 
 ### Get Specified TicketStatus of specified Manager
-GET {{baseURL}}/managers/johndoe/ticketStatus/closed
+GET {{baseURL}}/managers/johndoe/ticketStatus/open
 Authorization: BEARER {{token}}
 
 ### Get Specified TicketStatus of specified Manager with specified ticketId
@@ -31,7 +31,8 @@ GET {{baseURL}}/managers/guru_pruthvi/ticketStatus/pending/TICKET567
 
 ### Get the specified Manager ticket count of their collegues
 
-GET {{baseURL}}/managers/guru_pruthvi/collegue/ticketCount
+GET {{baseURL}}/managers/johndoe/collegue/ticketCount
+Authorization: BEARER {{token}}
 
 
 ### GET all Employee under manager

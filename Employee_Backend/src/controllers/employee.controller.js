@@ -27,8 +27,9 @@ const employeeController = () => {
         return await employeeService.getCollegues(id)
     }
 
-    const getStats = async ({id}) => {
-        return await employeeService.getStats(id)
+    const getStats = async ({id, request}) => {
+        const token = request.headers['authorization']?.split(' ')[1]
+        return await employeeService.getStats(id, token)
     }
 
     return {
