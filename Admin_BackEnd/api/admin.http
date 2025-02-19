@@ -1,13 +1,30 @@
 @baseURL = https://localhost:6000/api
-@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTk2NzE3NCwiZXhwIjoxNzM5OTcwNzc0LCJjbGFpbXMiOnsibmFtZSI6IlNwb29ydGhpIEcgUyIsImVtYWlsIjoic3Bvb3J0aGlAZ21haWwuY29tIiwicm9sZXMiOlsiYWRtaW4iXSwidXNlck5hbWUiOiJzcG9vcnRoaS1ncyJ9fQ.jLsvawfUAbJbaXu95uMuUUBOZNArWxjJXqJQqWYJBLe9E9TlyKJy3gByYUyn4gteOkWlTMVm9mSTOKPUE1wO4f_FBXQtJLrUlk61dWxTTQhrh86JQIbfw73r8NV6Fci1zLhQi1xCxCSQbGwcFs4yKoF6n1ZMDw01j5v64syWocxwfEhiqM-QOGuQrgTqhL4HpyF7oQcJ9dg5d6xGLQl8Q36hjiiMe8ECYZc42iL0iaJXqdNn4-pDGp2y36nrjKapAT2_NHacFUq3PlnI71Iae-iUae3VlRC6czX63eqnbQXMMM-KnpYGLSVq95FCtwuIuVHn43xTL9HEZjj2P9DzKw
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTk4ODE0MSwiZXhwIjoxNzM5OTkxNzQxLCJjbGFpbXMiOnsibmFtZSI6IlNwb29ydGhpIEcgUyIsImVtYWlsIjoic3Bvb3J0aGlAZ21haWwuY29tIiwicm9sZXMiOlsiYWRtaW4iXSwidXNlck5hbWUiOiJzcG9vcnRoaS1ncyJ9fQ.Hh3gnXwOyO1hWvUWJcMKxXoW43UWb51Jm78feG70CZmKFQiDUSnBboUW_voLqFaRCrvDcl7XjassPHfVaPKiUn86neSWu8nJJFQBiNbc5V_N2cxIE-VDSU-uMQYhIYJ6QEq2_5h7Enkn7_EZQcUJMrN8yEl4dbuyfCdSeTy7_RKT7vxva3RzCabnKd98SRtUMsfkG4v6k-LZGXnPu75e0W8Nu4D_SdYQwRY2VbDy0ffqU55Q0KmOoNzvPET5n6c6AzG5223XaKGYDES0cYshfGaSRn1Bs15_Tt76S-rezAAHDpToRnZ-192xJZwczdP0ipnPXAB5OIo8EthJE4_Rwg
 
 ### GET all admins
 GET {{baseURL}}/admins
 Authorization: Bearer {{token}}
 
+### GET all the count ticketWithState
+GET {{baseURL}}/admins/guru-pruthvi/ticketWithState
+Authorization: Bearer {{token}}
+
+### GET all the count ticketWithCity 
+GET {{baseURL}}/admins/guru-pruthvi/ticketWithCity
+Authorization: Bearer {{token}}
+
+### GET all the count ticketWithDomain
+GET {{baseURL}}/admins/guru-pruthvi/ticketWithDomain
+Authorization: Bearer {{token}}
+
+### GET all the count ticketWithLatAndLog
+GET {{baseURL}}/admins/guru-pruthvi/ticketWithLatAndLog
+Authorization: Bearer {{token}}
+
 
 ### GET an admin by ID
 GET {{baseURL}}/admins/admin12345
+Authorization: Bearer {{token}}
 
 ### GET an admin with INVALID ID
 GET {{baseURL}}/admins/INVALID_ID

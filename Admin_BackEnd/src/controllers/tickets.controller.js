@@ -23,12 +23,32 @@ const ticketController = () => {
         return await ticketService.deleteTicket(id);
     };
 
+    const getTicketCountByState = async () => {
+        return await ticketService.getTicketCountByState();
+    }
+
+    const getTicketCountByCity = async () => {
+        return await ticketService.getTicketCountByCity();
+    }
+
+    const getTicketCountByDomain = async () => {
+        return await ticketService.getTicketCountByDomain();
+    }
+
+    const getTicketCountByLatAndLog = async () => {
+        return await ticketService.getTicketCountByLatAndLog()
+    }
+
     return {
         getAllTickets,
         getTicketById,
         addTicket,
         updateTicket,
         deleteTicket,
+        getTicketCountByState,
+        getTicketCountByCity,
+        getTicketCountByDomain,
+        getTicketCountByLatAndLog,
     };
 };
 
