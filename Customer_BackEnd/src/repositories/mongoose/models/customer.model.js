@@ -7,7 +7,9 @@ const customerSchema = new mongoose.Schema({
   username: { type: String, unique: true, required: true}, 
   password: { type: String, required: true }, 
   email: { type: String, unique: true, required: true},
-  roles: {type: Array, required: true, default: ['customer']} 
+  roles: {type: Array, required: true, default: ['customer']},
+  address: {type: String, required: true},
+  pinCode: {type: Number, required: true}
 }, {timestamps: true}); 
 
 customerSchema.pre('save', function(next) {
