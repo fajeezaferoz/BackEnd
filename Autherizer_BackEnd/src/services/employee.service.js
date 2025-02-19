@@ -32,11 +32,12 @@ class EmployeeService {
         if(!user) throw new AuthenticationError(`Invalid credentials:${email}`,{email});
         let match = await bcrypt.compare(password,user.password);    
         if(!match) 
-            throw new AuthenticationError(`Invalid credentials: ${email}`,{email});
+            throw new AuthenticationError(`Invalid credentials: ${email}`,{email});9
         return this._userInfo(user);
     }
     
     _userInfo(user){
+        console.log("_userInfo", user);
         return {name:user.name, email:user.email, roles: user.roles, userName: user.employeeId}
     }
 }

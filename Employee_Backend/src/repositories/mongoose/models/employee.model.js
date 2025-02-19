@@ -15,6 +15,7 @@ const employeeSchema = new Schema({
   phoneNo: { type: String, required: true, unique: true, maxlength: 15 },
   password: { type: String, required: true, maxlength: 100 },
   avgResolutionTime: { type: Number, default: 0},
+  roles: {type: Array, required: true, default:['employee']},
   avgResponseTime: { type: Number, default: 0}
 }, { 
   timestamps: true // Adds createdAt and updatedAt
