@@ -23,12 +23,17 @@ const managerController = () => {
         return await managerService.deleteManager(id);
     };
 
+    const getStatusForManager = async ({ id }) => {
+        return await managerService.getStatusForManager(id);
+    }
+
     return {
         getAllManagers,
         getManagerById,
         addManager,
         updateManager,
         deleteManager,
+        getStatusForManager,
     };
 };
 

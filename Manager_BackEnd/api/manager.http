@@ -1,6 +1,6 @@
 @baseURL = https://localhost:5000/api
 
-@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTg3NDA0MywiZXhwIjoxNzM5ODc3NjQzLCJjbGFpbXMiOnsibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZXMiOlsibWFuYWdlciJdLCJ1c2VyTmFtZSI6ImpvaG5kb2UifX0.IhYCb2njEq6-VDValzM8zBmWvQJtyiqNK8q0x7mcSkA-34ecKbwdWzaT5ffKywVn8mMaY7cClc3hsYy8Tsbnkzl13NqZG0Omgl3ZEPJE1FsOOqvUabxfarRA1IemxfnLGgjfMNsDWwIWiKKKSR_lL-UCbpkPflJOmINq0KM6K6PnY3SNRPBs13P7fjJts0gvoYz1RDEVEw05IPdRfF0rtEnx_th1mqRF9XencvnzXfqGB3gtZRK7LxbLV0p5CE58Po_JbYEYiQMzYb-tXd-tjEnuvJBrCLo_2SvEETYh7SvMzgrVBHtx4j_ZHRoZV8zCzWW59knLfCLgxCfzG5zhfA
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTkyOTk4OCwiZXhwIjoxNzM5OTMzNTg4LCJjbGFpbXMiOnsibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZXMiOlsibWFuYWdlciJdLCJ1c2VyTmFtZSI6ImpvaG5kb2UifX0.Lhk0vSzhJK6idc4HU4rnVmPjlXe8XMtL_IVgPqKh4Mh8GsmKutyxk8fMFpp9TD_uZpngI3fX_OMBYhZf_SVR-k-0IRBZlX3eDqCzTTjbMDo_MN4OGaSSvsMKciKdDfrWcZUdU5uGuobGp2Xux7P2eINbTLl9qnRh8auxAwujOQHaZYjRPf9UpWBUiibWep8Q6vVo3xKS8v9IzGBAV0Ez811juKsn6wCev5x_wrwx0d3DNpch8DEhgfXyy62J64NxDER_Ltn2E_IYNVy0tFBhYA67ZxnvtT9D8onkisgDWd7CNGgFizw-KOCUbPCfvwko3H6PX5AmBK-yV_ccf2sUVw
 
 ###GET all managers
 GET {{baseURL}}/managers
@@ -15,6 +15,13 @@ GET {{baseURL}}/managers/INVALID_ID
 GET {{baseURL}}/managers/johndoe/ticketStatus
 Authorization: BEARER {{token}}
 
+### GET Specified ManagerId stats
+
+GET {{baseURL}}/managers/johndoe/stats
+Authorization: BEARER {{token}}
+
+
+
 ### Get Specified TicketStatus of specified Manager
 GET {{baseURL}}/managers/johndoe/ticketStatus/closed
 Authorization: BEARER {{token}}
@@ -28,7 +35,8 @@ GET {{baseURL}}/managers/guru_pruthvi/collegue/ticketCount
 
 
 ### GET all Employee under manager
-GET {{baseURL}}/managers/guru_pruthvi/collegue
+GET {{baseURL}}/managers/johndoe/collegue
+Authorization: BEARER {{token}}
 
 ### GET specific Employee under manager
 GET {{baseURL}}/managers/guru_pruthvi/collegue/mahesh-gupta

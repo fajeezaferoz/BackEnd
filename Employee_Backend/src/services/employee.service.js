@@ -91,7 +91,8 @@ class EmployeeService {
         const ticketsAssignedToEmployee = response.data
         employee.avgResolutionTime=await this.calculateAverageResponseTime(ticketsAssignedToEmployee);
         employee.avgResponseTime=await this.calculateAverageResolutionTime(ticketsAssignedToEmployee);
-        return await this.updateEmployee(employee.employeeId, employee)
+        await this.updateEmployee(employee.employeeId, employee)
+        return {employeeId: employee.employeeId, avgResponseTime: employee.avgResolutionTime, avgResolutionTime: employee.avgResponseTime}
     }
 }
 

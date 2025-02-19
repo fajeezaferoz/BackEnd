@@ -52,6 +52,10 @@ const createRouter = () => {
         .route('/:id/collegue/numOfTickets')
         .get(authorize('manager'), routeHandler(employeeControl.getNumOfTicketsForEmployeeForManager))
 
+    router
+        .route('/:id/stats')
+        .get(authorize('manager'), routeHandler(controller.getStatusForManager))
+
     return router;
 };
 
