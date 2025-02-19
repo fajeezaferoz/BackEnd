@@ -14,7 +14,7 @@ const paymentSchema = new mongoose.Schema({
   department: { type: String, required: true},
   customerId: { type: String, ref: customer, required: true }
 }, { timestamps: true});
-
+ 
 paymentSchema.pre('save', function (next) {
   if (!this.payId) {
       this.payId = `${this.customerId}-${Date.now()}`;

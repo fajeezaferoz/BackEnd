@@ -20,7 +20,7 @@ const ticketSchema = new mongoose.Schema({
     status: { type: String, enum: ['PENDING', 'OPEN', 'CLOSED'], required: true },
     changedAt: { type: Date, default: Date.now }
   }]
-});
+},{ timestamps: true });
 
 // Middleware to track status changes
 ticketSchema.pre('save', function (next) {
