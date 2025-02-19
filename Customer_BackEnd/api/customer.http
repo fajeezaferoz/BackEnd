@@ -46,12 +46,16 @@ POST {{baseURL}}/customers
 Content-Type: application/json
 
 {
-    "email": "guru@example.com",
-    "password": "securePass123",
-    "username": "guru pruthvi",
-    "phone_Number": "9876543210",
-    "name": "Guru Pruthvi"
+  "name": "Jyothish M J",
+  "phone_Number": "9632888266",
+  "username": "jyothish m j",
+  "password": "securePass123",
+  "email": "jyo@example.com",
+  "roles": ["customer"],
+  "address": "123 Main Street",
+  "pinCode": 571105
 }
+
 
 ### POST a new Different Customer
 POST {{baseURL}}/customers
