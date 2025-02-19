@@ -4,7 +4,7 @@
 GET {{baseURL}}/tickets
 
 ### GET a ticket by ID
-GET {{baseURL}}/tickets/guru-pruthvi-1739900815798
+GET {{baseURL}}/tickets/guru-pruthvi-1739903369706
 
 ### GET a ticket with INVALID ID
 GET {{baseURL}}/tickets/INVALID_ID
@@ -17,7 +17,7 @@ Content-Type: application/json
     "customerId": "guru-pruthvi",
     "ticketType": "Technical Issue",
     "ticketDescription": "Unable to access the dashboard.",
-    "ticketStatus": "PENDING",
+    "ticketStatus": "OPEN",
     "department": "finance"
 }
 

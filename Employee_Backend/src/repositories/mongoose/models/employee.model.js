@@ -14,8 +14,8 @@ const employeeSchema = new Schema({
   email: { type: String, required: true, unique: true, maxlength: 100 },
   phoneNo: { type: String, required: true, unique: true, maxlength: 15 },
   password: { type: String, required: true, maxlength: 100 },
-  avgResolutionTime: { type: Number},
-  avgResponses: { type: Number}
+  avgResolutionTime: { type: Number, default: 0},
+  avgResponseTime: { type: Number, default: 0}
 }, { 
   timestamps: true // Adds createdAt and updatedAt
 });

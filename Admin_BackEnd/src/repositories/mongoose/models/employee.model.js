@@ -2,23 +2,32 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const employeeSchema = new Schema({
-  EMPLOYEE_ID: { type: String, required: true, unique: true, autoIncrement: true },
-  EMPLOYEE_FIRSTNAME: { type: String, required: true, maxlength: 50 },
-  EMPLOYEE_LASTNAME: { type: String, required: true, maxlength: 50 },
-  EMPLOYEE_MANAGERID: {type: String, required: true},
-  EMPLOYEE_DESIGNATION: { type: String, required: true, maxlength: 50 },
-  EMPLOYEE_DEPARTMENT: { type: String, required: true, maxlength: 50 },
-  EMPLOYEE_GENDER: { type: String, required: true, enum: ['MALE', 'FEMALE'] },
-  EMPLOYEE_DATEOFBIRTH: { type: Date, required: true },
-  EMPLOYEE_DATEOFJOINING: { type: Date, required: true },
-  EMPLOYEE_TAKEHOME: { type: Number, required: true },
-  EMPLOYEE_EMAIL: { type: String, required: true, unique: true, maxlength: 100 },
-  EMPLOYEE_PHONENO: { type: String, required: true, unique: true, maxlength: 15 },
-  EMPLOYEE_PASSWORD: { type: String, required: true, maxlength: 100 },
-}, {
-  timestamps: true // This option adds `createdAt` and `updatedAt` fields
+  employeeId: { type: String, unique: true },
+  name: { type: String, required: true, maxlength: 50 },
+  managerId: { type: String, required: true },
+  designation: { type: String, required: true, maxlength: 50 },
+  department: { type: String, required: true, maxlength: 50 },
+  gender: { type: String, required: true, enum: ['MALE', 'FEMALE'] },
+  dateOfBirth: { type: Date, required: true },
+  dateOfJoining: { type: Date, required: true },
+  salary: { type: Number, required: true },
+  email: { type: String, required: true, unique: true, maxlength: 100 },
+  phoneNo: { type: String, required: true, unique: true, maxlength: 15 },
+  password: { type: String, required: true, maxlength: 100 },
+  avgResolutionTime: { type: Number, default: 0},
+  avgResponseTime: { type: Number, default: 0}
+}, { 
+  timestamps: true // Adds createdAt and updatedAt
 });
 
-const Employee = mongoose.model('Employee', employeeSchema, 'employee');
+// Pre-save middleware to generate employeeId from name
+employeeSchema.pre('save', function (next) {
+  if (!this.employeeId) {
+    this.employeeId = this.name.toLowerCase().replace(/\s+/g, '-');
+  }
+  next();
+});
+
+const Employee = mongoose.model('employee', employeeSchema, 'employee');
 
 module.exports = Employee;

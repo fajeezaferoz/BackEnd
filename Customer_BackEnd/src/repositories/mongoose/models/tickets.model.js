@@ -17,14 +17,14 @@ const ticketSchema = new mongoose.Schema({
   ticketStatus: { type: String, required: true, enum: ['PENDING', 'OPEN', 'CLOSED'], default: 'OPEN'},
   department: { type: String, required: true},
   ticketStatusHistory: [{
-    status: { type: String, enum: ['PENDING', 'OPEN', 'CLOSED'], required: true },
+    status: { type: String, enum: ['PENDING', 'OPEN', 'CLOSED'], required: true, default: 'OPEN'},
     changedAt: { type: Date, default: Date.now }
   }]
 });
 
 // Middleware to track status changes
 ticketSchema.pre('save', function (next) {
-  if (this.isModified('ticketStatus')) {
+  if (this.isNew || this.isModified('ticketStatus')) {
     this.ticketStatusHistory.push({ status: this.ticketStatus, changedAt: new Date() });
   }
   next();

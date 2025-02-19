@@ -16,14 +16,28 @@ class TicketService {
     }
 
     async updateTicket(id, ticketData) {
-        const ticket = await this.ticketRepository.findOne({ticketId: id})
-        if (!ticket) {
-            throw new Error('Ticket not found');
+        const ticket = await this.ticketRepository.findOne({ ticketId: id });
+        if (!ticket) throw new Error('Ticket not found');
+    
+        const validTransitions = {
+            OPEN: 'PENDING',
+            PENDING: 'CLOSED'
+        };
+    
+        if (ticketData.ticketStatus && ticketData.ticketStatus !== validTransitions[ticket.ticketStatus]) {
+            throw new Error(`Invalid status transition from ${ticket.ticketStatus} to ${ticketData.ticketStatus}`);
         }
-        if(ticketData.ticketStatus && ticket.ticketStatus!==ticketData.ticketStatus) 
-            ticketData.ticketStatusHistory=ticket.ticketStatusHistory.concat({ status: ticketData.ticketStatus, changedAt: new Date() });
-        return await this.ticketRepository.update({ ticketId: id }, ticketData);
+    
+        if (ticketData.ticketStatus && ticket.ticketStatus !== ticketData.ticketStatus) {
+            ticketData.ticketStatusHistory = [
+                ...(ticket.ticketStatusHistory || []),
+                { status: ticketData.ticketStatus, changedAt: new Date() }
+            ];
+        }
+    
+        return this.ticketRepository.update({ ticketId: id }, ticketData);
     }
+    
 
     async deleteTicket(id) {
         return await this.ticketRepository.remove({ ticketId: id });

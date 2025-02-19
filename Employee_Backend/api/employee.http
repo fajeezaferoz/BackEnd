@@ -1,5 +1,5 @@
 @baseURL = https://localhost:8000/api
-@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTg1MjUwOCwiZXhwIjoxNzM5ODU2MTA4LCJjbGFpbXMiOnsibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZXMiOlsiZW1wbG95ZWUiXSwidXNlck5hbWUiOiJqb2huLWRvZSJ9fQ.B-wo-ymFJ_n4uxQt8IOn_tn_EUegVlwaLeBsDj4knpKNhYJ_z4818SJwNzJxkonU4QVncrca1SXI6MditlmegMBLHLT4vladmUaVExODnKegGB0b2sluqMx8i0pm9S8OZT-UWQprss3KbVz8dNmjGNp6d2Y47rWJ77EE9S14o4cDg2kA5ZbtKvpKuVCwLTcpBTqfpFGwDg04T-_P_LH16qgNrdgTxp5Sy7BgRN54bhzRzpVL3SCWwrqmfDE1VGlRHClSYryMG-JL2M9C9GhokPS-6mhuXc1WfAfd3DQ-B2xSVZJhDnAE-IS32m2B5KxHIP8kpsF0mui1sCoLQmNgNg
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTkyODAzOSwiZXhwIjoxNzM5OTMxNjM5LCJjbGFpbXMiOnsibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZXMiOlsiZW1wbG95ZWUiXSwidXNlck5hbWUiOiJqb2huLWRvZSJ9fQ.CxVjDpU0-JXMHB9Ly-iJ1VTvTd_4VgtqOfBDY6AZm6WRisnbRLiFxYyZVSrp33EapjnzIEXXAQK9DB41SYXnwc84Jns4claMM7_9JmaD4IfEV1XsdOCdFbgVF3t8W5TqpDo1xHtZdx9idxz8q57UdbM9Aik_VJs8SMRbJTlnfvw-lF6fZzPnlbWOWcBRqlmhETqqrQQII3BNhVOD5s0xzKUYfPmw1AtAhEPQmhiPeDz8KYPmTw83cubMFEQX7BFgzD5pp8myBhBNiS67eRFIxD9XC4f1r0njNs-hHJ7jnRnni4HBiXrvogzsqm076wi_0zhELsVNwqSXdGyReM41eQ
 
 ### GET all employees
 GET {{baseURL}}/employees
@@ -12,10 +12,16 @@ Authorization: BEARER {{token}}
 
 
 ### GET an employee by ID
-GET {{baseURL}}/employees/john-doe
+GET {{baseURL}}/employees/nirmala
+Authorization: BEARER {{token}}
 
 ### GET an employee by ID with tickets
-GET {{baseURL}}/employees/john-doe/tickets
+GET {{baseURL}}/employees/nirmala/tickets
+Authorization: BEARER {{token}}
+
+### GET an employee stats
+GET {{baseURL}}/employees/nirmala/stats
+Authorization: BEARER {{token}}
 
 ### GET an employee with INVALID ID
 GET {{baseURL}}/employees/INVALID_ID
@@ -72,7 +78,8 @@ Content-Type: application/json
 }
 
 ### Update the ticket status
-PUT {{baseURL}}/employees/john-doe/tickets/TICKET456
+PUT {{baseURL}}/employees/nirmala/tickets/guru-pruthvi-1739928288952
+Authorization: BEREAR {{token}}
 Content-Type: application/json
 
 {
