@@ -12,6 +12,23 @@ Content-Type: application/json
 ###
 @token = {{loginAdmin.response.body.token}}
 
+### POST generate the otp w.r.t email
+POST {{baseURL}}/admins/generateOTP
+Content-Type: application/json
+
+{
+    "email": "spoorthi@gmail.com"
+}
+
+### POST verify the otp
+POST {{baseURL}}/customers/verifyOTP
+Content-Type: application/json
+
+{
+    "email": "spoorthi@gmail.com",
+    "otp": "572409"
+}
+
 ### GET all admins
 GET {{baseURL}}/admins
 Authorization: BEARER {{token}}
