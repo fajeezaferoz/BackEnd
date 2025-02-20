@@ -9,10 +9,6 @@ const createRouter = () => {
     let controller = adminController();
     
     router
-    .route('/login')
-    .post(routeHandler(controller.loginCustomer));
-
-    router
      .route('/generateOTP')
      .post(routeHandler(controller.generateOTP))
     

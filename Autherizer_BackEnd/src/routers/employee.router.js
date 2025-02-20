@@ -9,10 +9,6 @@ const createRouter = () => {
     let controller = employeeController();
 
     router
-    .route('/login')
-    .post(routeHandler(controller.loginCustomer));
-
-    router
      .route('/generateOTP')
      .post(routeHandler(controller.generateOTP))
     
