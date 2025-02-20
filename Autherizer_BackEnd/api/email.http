@@ -1,0 +1,11 @@
+@baseURL = https://localhost:7000/api
+
+### POST email
+POST {{baseURL}}/email
+Content-Type: application/json
+
+{
+    "subject": "Hello World",
+    "htmlVal": "This is a test email.",
+    "to": "gurupruthvi61@gmail.com"
+}
