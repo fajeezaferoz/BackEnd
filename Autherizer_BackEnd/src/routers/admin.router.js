@@ -7,6 +7,18 @@ const createRouter = () => {
     const router = express.Router();
     let { routeHandler } = expressx;
     let controller = adminController();
+    
+    router
+    .route('/login')
+    .post(routeHandler(controller.loginCustomer));
+
+    router
+     .route('/generateOTP')
+     .post(routeHandler(controller.generateOTP))
+    
+    router
+     .route('/verifyOTP')
+     .post(routeHandler(controller.verifyOTP));
 
     router
         .route('/login')

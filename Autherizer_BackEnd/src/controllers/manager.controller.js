@@ -41,6 +41,18 @@ const managerController = () => {
         return request.token;
     }
 
+    const resetPassword = async ({body}) => {
+        return null
+    }
+
+    const generateOTP = async ({body}) => {
+        return await customerService.generateOTP(body);
+    }
+
+    const verifyOTP = async ({body}) => {
+        return await customerService.verifyOTP(body);
+    }
+
     return {
         getAllManagers,
         getManagerById,
@@ -49,6 +61,9 @@ const managerController = () => {
         deleteManager,
         loginManager,
         currentManagerInfo,
+        resetPassword,
+        generateOTP,
+        verifyOTP,
     };
 };
 

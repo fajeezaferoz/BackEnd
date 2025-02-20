@@ -40,6 +40,18 @@ const employeeController = () => {
         return request.token;
     }
 
+    const resetPassword = async ({body}) => {
+        return null
+    }
+
+    const generateOTP = async ({body}) => {
+        return await customerService.generateOTP(body);
+    }
+
+    const verifyOTP = async ({body}) => {
+        return await customerService.verifyOTP(body);
+    }
+
     return {
         getAllEmployees,
         getEmployeeById,
@@ -48,6 +60,9 @@ const employeeController = () => {
         deleteEmployee,
         loginEmployee,
         currentEmployeeInfo,
+        resetPassword,
+        generateOTP,
+        verifyOTP,
     }
 }
 

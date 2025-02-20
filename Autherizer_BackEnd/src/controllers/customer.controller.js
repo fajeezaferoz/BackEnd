@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const privateKey = fs.readFileSync(path.join(process.cwd(),'keys','jwt2.private.key'),'utf-8');
 
-const customerController = () =>{
+const customerController = () =>{ 
     const customerService = injector.getService('customerService')
   
     const getAllCustomer = async () => {
@@ -33,6 +33,18 @@ const customerController = () =>{
     const currentUserInfo = async ({request})=>{        
         return request.token;
     }
+
+    const resetPassword = async ({body}) => {
+        return null
+    }
+
+    const generateOTP = async ({body}) => {
+        return await customerService.generateOTP(body);
+    }
+
+    const verifyOTP = async ({body}) => {
+        return await customerService.verifyOTP(body);
+    }
     
     return {
         getAllCustomer,
@@ -42,6 +54,9 @@ const customerController = () =>{
         deleteCustomer,
         loginCustomer,
         currentUserInfo,
+        resetPassword,
+        generateOTP, 
+        verifyOTP,
     }
 }
 

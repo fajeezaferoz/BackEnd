@@ -11,6 +11,23 @@ Content-Type: application/json
     "password": "prana123@"
 }
 
+### POST generate the otp w.r.t email
+POST {{baseURL}}/customers/generateOTP
+Content-Type: application/json
+
+{
+    "email": "prana@example.com"
+}
+
+### POST verify the otp
+POST {{baseURL}}/customers/verifyOTP
+Content-Type: application/json
+
+{
+    "email": "prana@example.com",
+    "otp": "278424"
+}
+
 ###
 @token = {{loginCustomer.response.body.token}}
 

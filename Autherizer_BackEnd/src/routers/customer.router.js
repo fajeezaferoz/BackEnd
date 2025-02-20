@@ -9,8 +9,20 @@ const createRouter = () => {
     let controller = customerController() 
  
     router
-     .route('/login')
-     .post(routeHandler(controller.loginCustomer));
+    .route('/login')
+    .post(routeHandler(controller.loginCustomer));
+
+    router
+     .route('/generateOTP')
+     .post(routeHandler(controller.generateOTP))
+    
+    router
+     .route('/verifyOTP')
+     .post(routeHandler(controller.verifyOTP));
+    
+    router
+     .route('/resetPassword')
+     .post(routeHandler(controller.resetPassword))
 
     router
      .route('/')
@@ -23,9 +35,11 @@ const createRouter = () => {
      .put(authenticate, routeHandler(controller.updateCustomer))
      .delete(authenticate, routeHandler(controller.deleteCustomer));
 
-     router
+    router
      .route('/current')
      .get(authenticate,routeHandler(controller.currentUserInfo))
+
+
 
     return router;
 }

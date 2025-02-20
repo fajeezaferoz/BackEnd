@@ -33,7 +33,13 @@ const customer = require('./repositories/mongoose/models/customer.model')
 const MongooseCustomerRepository = require('./repositories/mongoose/customer.repository');
 const customerService = require('./services/customer.service')
 
-// Authentication middleware
+// OTP
+
+const otp = require('./repositories/mongoose/models/otp.model')
+const MongooseOtpRepository = require('./repositories/mongoose/otp.repository');
+
+
+// Initialize the injector
 
 
 
@@ -70,6 +76,10 @@ injector
   .addServiceObject('customer', customer)
   .addService('customerRepository', MongooseCustomerRepository)
   .addService('customerService', customerService)
+
+   // OTP Module
+  .addServiceObject('otp', otp)
+  .addService('otpRepository', MongooseOtpRepository)
 
   
 expressx.addCustomError('MongoServerError', 400)
