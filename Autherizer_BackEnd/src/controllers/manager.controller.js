@@ -46,11 +46,11 @@ const managerController = () => {
     }
 
     const generateOTP = async ({body}) => {
-        return await customerService.generateOTP(body);
+        return await managerService.generateOTP(body);
     }
 
     const verifyOTP = async ({body}) => {
-        return await customerService.verifyOTP(body);
+        return await managerService.verifyOTP(body);
     }
 
     return {

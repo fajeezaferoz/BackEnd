@@ -46,11 +46,11 @@ const authorizerController = () => {
     }
 
     const generateOTP = async ({body}) => {
-        return await customerService.generateOTP(body);
+        return await authorizerService.generateOTP(body);
     }
 
     const verifyOTP = async ({body}) => {
-        return await customerService.verifyOTP(body);
+        return await authorizerService.verifyOTP(body);
     }
 
     return {

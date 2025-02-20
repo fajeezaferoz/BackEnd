@@ -2,8 +2,9 @@ const bcrypt = require('bcrypt');
 const { AuthenticationError } = require('ca-webutils/errors');
 
 class AuthorizerSchemaService {
-    constructor(authorizerRepository) {
+    constructor(authorizerRepository, otpRepository) {
         this.authorizerRepository = authorizerRepository;
+        this.otpRepository = otpRepository;
     }
 
     async getAllAuthorizers() {
@@ -45,12 +46,9 @@ class AuthorizerSchemaService {
 
         let userOTP = await this.otpRepository.findOne({email: email})
         if (userOTP) {
-            console.log("Guru");
             await this.otpRepository.remove({email})
         }
-        console.log("Pruthvi");
-        
-        let user = await this.customerRepository.getByEmailId({ email });
+        let user = await this.authorizerRepository.findOne({ email });
         if (!user) throw new AuthenticationError(`User with email ${email} not found`, { email });
     
         let otp = Math.floor(100000 + Math.random() * 900000).toString(); // Convert to string
@@ -78,6 +76,6 @@ class AuthorizerSchemaService {
     }
 }
 
-AuthorizerSchemaService._dependencies = ['authorizeRepository'];
+AuthorizerSchemaService._dependencies = ['authorizeRepository', 'otpRepository'];
 
 module.exports = AuthorizerSchemaService;

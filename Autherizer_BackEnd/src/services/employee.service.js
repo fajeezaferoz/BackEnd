@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const { AuthenticationError } = require('ca-webutils/errors');
-
+const CryptoJS = require('crypto-js');
 class EmployeeService {
     constructor(employeeRepository, otpRepository) {
         this.employeeRepository = employeeRepository;
@@ -49,7 +49,7 @@ class EmployeeService {
         if (userOTP) {
             await this.otpRepository.remove({email})
         }
-        let user = await this.customerRepository.getByEmailId({ email });
+        let user = await this.employeeRepository.findOne({ email });
         if (!user) throw new AuthenticationError(`User with email ${email} not found`, { email });
     
         let otp = Math.floor(100000 + Math.random() * 900000).toString(); // Convert to string

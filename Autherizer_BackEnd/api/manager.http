@@ -9,6 +9,23 @@ GET {{baseURL}}/managers/mgr12345
 ###GET a manager with INVALID ID
 GET {{baseURL}}/managers/INVALID_ID
 
+### POST generate the otp w.r.t email
+POST {{baseURL}}/managers/generateOTP
+Content-Type: application/json
+
+{
+    "email": "johndoe@example.com"
+}
+
+### POST verify the otp
+POST {{baseURL}}/managers/verifyOTP
+Content-Type: application/json
+
+{
+    "email": "johndoe@example.com",
+    "otp": "830208"
+}
+
 ###
 
 # @name loginManager

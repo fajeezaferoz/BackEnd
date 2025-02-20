@@ -12,6 +12,23 @@ Content-Type: application/json
 ###
 @token = {{loginAuth.response.body.token}}
 
+### POST generate the otp w.r.t email
+POST {{baseURL}}/customers/generateOTP
+Content-Type: application/json
+
+{
+    "email": "prana@example.com"
+}
+
+### POST verify the otp
+POST {{baseURL}}/customers/verifyOTP
+Content-Type: application/json
+
+{
+    "email": "prana@example.com",
+    "otp": "619803"
+}
+
 ### GET all authorizers
 GET {{baseURL}}/authorizers
 Authorization: BEARER {{token}}

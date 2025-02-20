@@ -45,11 +45,11 @@ const employeeController = () => {
     }
 
     const generateOTP = async ({body}) => {
-        return await customerService.generateOTP(body);
+        return await employeeService.generateOTP(body);
     }
 
     const verifyOTP = async ({body}) => {
-        return await customerService.verifyOTP(body);
+        return await employeeService.verifyOTP(body);
     }
 
     return {
