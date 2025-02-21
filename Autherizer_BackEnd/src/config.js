@@ -39,9 +39,14 @@ const otp = require('./repositories/mongoose/models/otp.model')
 const MongooseOtpRepository = require('./repositories/mongoose/otp.repository');
 
 
-// Initialize the injector
+// Email
 const emailService = require('./services/email.service');
 
+// Notification 
+
+const notificationService = require('./services/notification.service');
+const notification = require('./repositories/mongoose/models/notification.model')
+const NotificationRepository = require('./repositories/mongoose/notification.repository')
 
 
 injector
@@ -81,8 +86,11 @@ injector
    // OTP Module
   .addServiceObject('otp', otp)
   .addService('otpRepository', MongooseOtpRepository)
-
+  // email module
   .addServiceObject('emailService', emailService)
-
+  // notification module
+  .addServiceObject('notification', notification)
+  .addService('notificationRepository', NotificationRepository)
+  .addService('notificationService', notificationService)
   
 expressx.addCustomError('MongoServerError', 400)

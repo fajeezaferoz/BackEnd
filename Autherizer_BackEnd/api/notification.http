@@ -1,0 +1,23 @@
+@baseURL = https://localhost:7000/api
+
+### notifications
+
+### POST a new notification
+POST {{baseURL}}/notifications
+Content-Type: application/json
+
+{
+    "userId": "",
+    "title": "Ticket Update for your issue -{ticket-id}",
+    "description": "The conference is scheduled for next week.",
+    "roles": ["customer", "employee"]
+}
+
+### GET all notifications for a user
+POST  {{baseURL}}/notifications/getAll
+Content-Type: application/json
+
+{
+    "userId": "john-doe",
+    "roles": ["employee"]
+}
