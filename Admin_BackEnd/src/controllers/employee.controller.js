@@ -11,8 +11,9 @@ const employeeController = () => {
         return await employeeService.getEmployeeById(id)
     }
 
-    const addEmployee = async ({ body }) => {
-        return await employeeService.createEmployee(body)
+    const addEmployee = async ({ body, request }) => {
+        const token = request.headers['authorization']?.split(' ')[1]
+        return await employeeService.createEmployee(body, token)
     }
 
     const updateEmployee = async ({ body, id }) => {

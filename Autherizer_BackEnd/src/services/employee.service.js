@@ -1,6 +1,13 @@
 const bcrypt = require('bcrypt');
 const { AuthenticationError } = require('ca-webutils/errors');
 const CryptoJS = require('crypto-js');
+const axios = require('axios');
+const https = require('https');
+
+const httpsAgent = new https.Agent({
+    rejectUnauthorized: false, 
+});
+
 class EmployeeService {
     constructor(employeeRepository, otpRepository) {
         this.employeeRepository = employeeRepository;
@@ -15,9 +22,37 @@ class EmployeeService {
         return await this.employeeRepository.findOne({ employeeId: id });
     }
 
+    async sendEmail(employee){
+        const emailData = {
+            subject: `Welcome to Brillio`,
+            htmlVal: `
+            <p>Dear ${employee.name}</p>
+            <p>Welcome to Brillio! We're excited to have you join our team. Please find below your login credentials:</p>
+            <p>Email: <b>${employee.email}</b></p>
+            <p>Password: ${employee.password}</p>
+            <p>Thank you for joining Brillio, and we look forward to working with you!</p>
+            <p>Regards,<p>
+            CodeCrafters
+            `,
+            to: employee.email
+        }
+        try{
+            axios.post(`https://localhost:7000/api/email`, emailData, {
+                httpsAgent,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        }catch(error){
+            throw new Error('Failed to send email');
+        }
+    }
+
     async createEmployee(employee) {
+        await this.sendEmail(employee);
         employee.password = await bcrypt.hash(employee.password, 10);
-        return await this.employeeRepository.create(employee);
+        const responce = await this.employeeRepository.create(employee);
+        return responce;
     }
 
     async updateEmployee(id, employeeData) {

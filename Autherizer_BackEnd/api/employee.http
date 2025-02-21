@@ -47,14 +47,13 @@ Content-Type: application/json
 
 {
     "name": "John Doe",
-    "managerId": "MGR123",
+    "managerId": "nirmala",
     "designation": "Software Engineer",
-    "department": "IT",
-    "email": "johndoe@example.com",
-    "phoneNo": "1234567890",
-    "password": "hashedpassword123"
+    "department": "Engineering",
+    "email": "johndoe@yahoo.com",
+    "phoneNo": "9685748989",
+    "password": "hashedpassword123",
 }
-
 
 
 

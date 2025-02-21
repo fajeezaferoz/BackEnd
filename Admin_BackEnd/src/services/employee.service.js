@@ -16,13 +16,19 @@ class EmployeeService {
 
     async getEmployeeById(id) {
         return await this.employeeRepository.findOne({ employeeId: id });
-    }
+    } 
 
     async createEmployee(employee) {
         try{
-            return await axios.post(`https://localhost:7000/api/employees`, employee)
-    }catch(error){
-            throw error; 
+            const response = await axios.post(`https://localhost:7000/api/employees`, employee, {
+                httpsAgent,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            return response.data;
+        }catch(error){
+            throw new Error(error.response.data.message);
         }
     }
 
