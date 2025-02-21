@@ -20,8 +20,15 @@ const notificationSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    expiresAt: {
+      type: Date,
+      default: () => new Date(Date.now() +  24 *  60 * 1000), // 15 minutes
+      required: true,
+    }
   },
   { timestamps: true }
 );
+
+notificationSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
 module.exports = mongoose.model("notification", notificationSchema, "notification");
