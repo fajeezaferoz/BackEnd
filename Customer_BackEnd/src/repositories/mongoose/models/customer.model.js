@@ -11,7 +11,7 @@ const customerSchema = new mongoose.Schema(
     email: { type: String, unique: true, required: true },
     roles: { type: Array, required: true, default: ['customer'] },
     address: { type: String, required: true },
-    pinCode: { type: Number, required: true },
+    pinCode: { type: Number, required: true }, // not required
     latitude: { type: Number }, // Store the latitude
     longitude: { type: Number }, // Store the longitude
   },
