@@ -49,10 +49,8 @@ class CustomerService{
 
         let userOTP = await this.otpRepository.findOne({email: email})
         if (userOTP) {
-            console.log("Guru");
             await this.otpRepository.remove({email})
         }
-        console.log("Pruthvi");
         
         let user = await this.customerRepository.getByEmailId({ email });
         if (!user) throw new AuthenticationError(`User with email ${email} not found`, { email });

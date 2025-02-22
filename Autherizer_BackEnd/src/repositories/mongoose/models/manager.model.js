@@ -7,8 +7,10 @@ const managerSchema = new mongoose.Schema({
   username: { type: String, unique: true, required: true}, 
   password: { type: String, required: true }, 
   email: { type: String, unique: true, required: true},
-  domain: {type: String, required: true, unique: true},
+  department: {type: String, required: true, unique: true},
   roles: {type: Array, required: true, default: ['manager']},
+  avgResolutionTime: { type: Number, default: 0},
+  avgResponseTime: { type: Number, default: 0}
 }, {timestamps: true}); 
 
 managerSchema.pre('save', function(next) {

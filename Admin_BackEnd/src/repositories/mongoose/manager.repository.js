@@ -4,6 +4,10 @@ class MongooseManagerRepository extends MongooseRepository{
     constructor(model){
         super(model); 
     }
+
+    async deleteData(id){
+        return this.model.findByIdAndDelete(id);
+    }
 } 
 
 MongooseManagerRepository._dependencies = ['manager']

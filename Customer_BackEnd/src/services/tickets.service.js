@@ -35,7 +35,6 @@ class TicketService {
             
             ticket.latitude=customer.data.latitude
             ticket.longitude=customer.data.longitude
-            console.log(ticket);
             const allManagers = await axios.get('https://localhost:5000/api/managers', {
                 httpsAgent,
                 headers: {

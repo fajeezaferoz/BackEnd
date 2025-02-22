@@ -1,6 +1,12 @@
 const { AuthenticationError } = require("ca-webutils/errors");
 const bcrypt = require('bcrypt');
 const CryptoJS = require('crypto-js')
+const axios = require('axios');
+const https = require('https');
+const httpsAgent = new https.Agent({
+    rejectUnauthorized: false, 
+});
+
 class ManagerService {
     constructor(managerRepository, otpRepository) {
         this.managerRepository = managerRepository;
@@ -15,9 +21,41 @@ class ManagerService {
         return await this.managerRepository.findOne({ Manager_ID: id });
     }
 
+    async sendEmail(employee){
+        const emailData = {
+            subject: `Welcome to Brillio`,
+            htmlVal: `
+            <p>Dear ${employee.name}</p>
+            <p>Welcome to Brillio! We're excited to have you join our team. Please find below your login credentials:</p>
+            <p>Email: <b>${employee.email}</b></p>
+            <p>Password: ${employee.password}</p>
+            <p>Thank you for joining Brillio, and we look forward to working with you!</p>
+            <p>Regards,<p>
+            CodeCrafters
+            `,
+            to: employee.email
+        }
+        try{
+            axios.post(`https://localhost:7000/api/email`, emailData, {
+                httpsAgent,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        }catch(error){
+            throw new Error('Failed to send email');
+        }
+    }
+
     async createManager(manager) {
+        const password = manager.password
         manager.password = await bcrypt.hash(manager.password, 10);
-        return await this.managerRepository.create(manager);
+        const responce = await this.managerRepository.create(manager);
+        if(!responce.message){
+            manager.password=password
+            await this.sendEmail(manager)
+        }
+        return responce;
     }
 
     async updateManager(id, managerData) {
@@ -46,10 +84,8 @@ class ManagerService {
 
         let userOTP = await this.otpRepository.findOne({email: email})
         if (userOTP) {
-            console.log("Guru");
             await this.otpRepository.remove({email})
         }
-        console.log("Pruthvi");
         
         let user = await this.managerRepository.findOne({ email });
         if (!user) throw new AuthenticationError(`User with email ${email} not found`, { email });

@@ -44,7 +44,6 @@ class TicketService {
         try {
             const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
             const data = await response.json();
-            console.log(data.address);
             return data.address?.state_district || null;
         } catch (error) {
             console.error('Error converting coordinates to city:', error);

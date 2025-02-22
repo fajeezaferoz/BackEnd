@@ -11,16 +11,17 @@ const managerController = () => {
         return await managerService.getManagerById(id);
     };
 
-    const addManager = async ({ body }) => {
-        return await managerService.createManager(body);
+    const addManager = async ({ body, request }) => {
+        const token = request.headers['authorization']?.split(' ')[1]
+        return await managerService.createManager(body, token);
     };
 
-    const updateManager = async ({ body, id }) => {
-        return await managerService.updateManager(id, body);
+    const updateManager = async ({ body, id, mrgId }) => {
+        return await managerService.updateManager(id, body, mrgId);
     };
 
-    const deleteManager = async ({ id }) => {
-        return await managerService.deleteManager(id);
+    const deleteManager = async ({ mrgId }) => {
+        return await managerService.deleteManager(mrgId);
     };
 
     return {

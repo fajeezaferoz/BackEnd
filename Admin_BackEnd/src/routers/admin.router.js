@@ -28,6 +28,9 @@ const createRouter = () => {
         .route('/:id/employee')
         .post(authorize('admin'), routeHandler(employeecontrol.addEmployee))
         .get(authorize('admin'), routeHandler(employeecontrol.getAllEmployees))
+    
+    router
+        .route('/:id/employee/:empId')
         .put(authorize('admin'), routeHandler(employeecontrol.updateEmployee))
         .delete(authorize('admin'), routeHandler(employeecontrol.deleteEmployee));
     
@@ -35,6 +38,9 @@ const createRouter = () => {
         .route('/:id/managers')
         .post(authorize('admin'), routeHandler(managercontrol.addManager))
         .get(authorize('admin'), routeHandler(managercontrol.getAllManagers))
+    
+    router
+        .route('/:id/managers/:mrgId')
         .put(authorize('admin'), routeHandler(managercontrol.updateManager))
         .delete(authorize('admin'), routeHandler(managercontrol.deleteManager));
 

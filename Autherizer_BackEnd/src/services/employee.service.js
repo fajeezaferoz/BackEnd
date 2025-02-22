@@ -49,9 +49,13 @@ class EmployeeService {
     }
 
     async createEmployee(employee) {
-        await this.sendEmail(employee);
+        const password = employee.password
         employee.password = await bcrypt.hash(employee.password, 10);
         const responce = await this.employeeRepository.create(employee);
+        if(!responce.message){
+            employee.password = password;
+            await this.sendEmail(employee);
+        }
         return responce;
     }
 
@@ -73,7 +77,6 @@ class EmployeeService {
     }
     
     _userInfo(user){
-        console.log("_userInfo", user);
         return {name:user.name, email:user.email, roles: user.roles, userName: user.employeeId}
     }
 

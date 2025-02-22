@@ -47,7 +47,6 @@ class AdminService {
 
         let userOTP = await this.otpRepository.findOne({email: email})
         if (userOTP) {
-            console.log("Guru");
             await this.otpRepository.remove({email})
         } 
         

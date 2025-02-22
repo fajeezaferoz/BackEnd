@@ -16,14 +16,14 @@ const employeeController = () => {
         return await employeeService.createEmployee(body, token)
     }
 
-    const updateEmployee = async ({ body, id }) => {
-        return await employeeService.updateEmployee(id, body)
+    const updateEmployee = async ({ body, id, empId }) => {
+        return await employeeService.updateEmployee(id, body, empId)
     }
 
-    const deleteEmployee = async ({ id }) => {
-        return await employeeService.deleteEmployee(id)
+    const deleteEmployee = async ({ id, empId }) => {
+        return await employeeService.deleteEmployee(empId)
     }
-
+ 
     return {
         getAllEmployees,
         getEmployeeById,

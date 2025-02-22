@@ -14,7 +14,6 @@ class NotificationService{
     
 
     async createNotification(body){
-        console.log(body);
         return await this.notificationRepository.create(body);
     }
 }

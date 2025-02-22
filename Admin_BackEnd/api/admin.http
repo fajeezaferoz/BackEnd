@@ -1,5 +1,5 @@
 @baseURL = https://localhost:6000/api
-@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTc0MDAyMjkzMCwiZXhwIjoxNzQwMDI2NTMwLCJjbGFpbXMiOnsibmFtZSI6IlNwb29ydGhpIEcgUyIsImVtYWlsIjoic3Bvb3J0aGlAZ21haWwuY29tIiwicm9sZXMiOlsiYWRtaW4iXSwidXNlck5hbWUiOiJzcG9vcnRoaS1ncyJ9fQ.fpfgwTq_TVQKODUcHC9kcwtI77-BCh2uRSJchqzIXqMm7er97COKZSn3z9G5bi9lsK4sl1pqTOKqKY9jFQ-Eircmu32NyO_wjEIwGMgISFLppbB7U-MmBlmtwkK3-9iF1Hcb1dxayxGT8QSZRMeiZUPu19b5BA7_2XK-Mgin8hWZpLqZFVJ1oxZR_-vAry86a8AzZlgWHeP2JSJsbG0D2ARsimttmTWYoztmanax9rDCgKUFkwqdcVNF66B9geAcUnYBYTINE0an58bFlHW1HToHIIycipor5xV0ptJFeVp1T4SDJXLssHfuEr-0EWzDO4ONfeYg_PY_L4TB7mElwQ
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTc0MDE5MTI3NiwiZXhwIjoxNzQwMTk0ODc2LCJjbGFpbXMiOnsibmFtZSI6IlNwb29ydGhpIEcgUyIsImVtYWlsIjoic3Bvb3J0aGlAZ21haWwuY29tIiwicm9sZXMiOlsiYWRtaW4iXSwidXNlck5hbWUiOiJzcG9vcnRoaS1ncyJ9fQ.MHedAlwIOTvg4q7YzQw8DCy-s7qOYUgT3VRf2au8-cTHTumsEOKfu5TwLzCGWlxdnHBeJ8_Ed_-jyk4x2yTg4ylcPpWvUH5q3KTNnnPqGU7w_DT4bhV4Bo3qYZu9vGjcqW2YD-JloWBvaymOClHhQNvAhVELww9dAkehtIXo3H0rKfEg9YEsikTTkGHVNhxH8GRz26o3zy3f44xNfBAiHhSrZH-2gQI4mBvHtXC3M_g272QsUD5SFnGz2207KinZuOs4GuanY7B5wm3GVqr5kPI74ErVr31Wq92JDO0M6o73nnuzGvN8H2noHVclYn4ssE4TlQJTQr8dH3aGLio8pQ
 
 ### GET all admins
 GET {{baseURL}}/admins
@@ -21,6 +21,55 @@ Authorization: Bearer {{token}}
 GET {{baseURL}}/admins/guru-pruthvi/ticketWithLatAndLog
 Authorization: Bearer {{token}}
 
+### EMPLOYEE
+### POST a new employee
+POST {{baseURL}}/employees
+Authorization: BEARER {{token}}
+Content-Type: application/json
+
+{
+    "name": "Guru Pruthvi J M",
+    "managerId": "nirmala",
+    "designation": "Software Engineer",
+    "department": "Engineering",
+    "email": "gurupruthvijm@gmail.com",
+    "phoneNo": "9019867897",
+    "password": "hashedpassword123"
+}
+
+
+### UPDATE the employee Details
+PUT {{baseURL}}/admins/guru-pruthvi/employee/guru-pruthvi-j-m
+Authorization: BEARER {{token}}
+Content-Type: application/json
+
+{
+    "name": "Guru Pruthvi J M",
+    "managerId": "nirmala",
+    "designation": "Senior Software Engineer",
+    "email": "gurupruthvijm@gmail.com"
+}
+
+
+### DELETE the employee by ID
+DELETE {{baseURL}}/admins/guru-pruthvi/employee/guru-pruthvi-j-m
+Authorization: BEARER {{token}}
+
+### MANAGERS
+### Add a new Manager
+POST {{baseURL}}/admins/guru-pruthvi/managers
+Authorization:  BEARER {{token}}
+Content-Type: application/json
+
+{
+    "name": "Nirmala",
+    "department": "Data&AI",
+    "email": "gurupruthvi61@gmail.com",
+    "username": "Nirmala Mahesh",
+    "phone_Number": "9019867898",
+    "password": "securePass123"
+
+}
 
 ### GET an admin by ID
 GET {{baseURL}}/admins/admin12345
