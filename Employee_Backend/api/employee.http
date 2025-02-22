@@ -1,5 +1,5 @@
 @baseURL = https://localhost:8000/api
-@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTk2NzI2OSwiZXhwIjoxNzM5OTcwODY5LCJjbGFpbXMiOnsibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZXMiOlsiZW1wbG95ZWUiXSwidXNlck5hbWUiOiJqb2huLWRvZSJ9fQ.de11Y3eR1yrop_Qw8XTTVR0-88aHSJCZAJnMzFrFH1pEZbMgm8vtXPJT8vqH5GJXWpPtnOiF5pcTQToibB6oA6_JboFMzjNNN5UA1HY6MukAOkYQTk8Dd5yca5JSK3e5hySvObNhPQT1pj4w9nRPAHYSehK2NLkVbeWDu28JDUuJTwxkfNRoZ7Ul9qn-pK969dl2NDj86ZzGvG6agDzhd27Q1XKl5GBmGmk0pHLgLJMGvFXFYBLuFNpIfJz205BkQVgHSqCrfImcMj3X7sjNuY7u-3JxvK7dQwDN5JbtDdAm7qwEKhm6ideMj8DzPLvTYOtZUJZwRpVJmP_fnwGhaQ
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTc0MDIwMjgwNSwiZXhwIjoxNzQwMjA2NDA1LCJjbGFpbXMiOnsibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZXMiOlsiZW1wbG95ZWUiXSwidXNlck5hbWUiOiJqb2huLWRvZSJ9fQ.KtQXyD4sGrC3IQh-YugccHckD6BOjfE1s3MpclgjtnS0uzRI0TJGOjvd26JNfsQRSyTwk5CEl5MJx4epr12XcPCIBku0HvX5eWODbtizAB-5iEcUoa80p7ZCcwYzB-_lTkvMR2IIem74B7ZbAQFwMwFg3aRYEK_nCw5AvoOrjPA4f6e24a8_3Xa0BM-ogM3i0JrhGDE-IF0aSfjjabw1_aGN3sQ1OcIhhVzOSvW-1v9r8cb7FBPwbXac5Q04hcj1sCK39oWhf5V0Voa-7Zk37OLAWds_ae0ks6LdYRl4JJEN0ziZDdEn66d-LbRrOBdxGz_Qkaj9Dmd9oJaFG3nmeA
 
 ### GET all employees
 GET {{baseURL}}/employees
@@ -78,10 +78,10 @@ Content-Type: application/json
 }
 
 ### Update the ticket status
-PUT {{baseURL}}/employees/nirmala/tickets/guru-pruthvi-1739928288952
+PUT {{baseURL}}/employees/nirmala/tickets/jyothish-m-j-1740198888432
 Authorization: BEREAR {{token}}
 Content-Type: application/json
 
 {
-    "ticketStatus": "CLOSED"
+    "ticketStatus": "PENDING"
 }

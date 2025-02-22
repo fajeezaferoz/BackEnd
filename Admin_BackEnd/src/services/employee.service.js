@@ -30,7 +30,7 @@ class EmployeeService {
             })
             return response.data;
         }catch(error){
-            throw new Error(error.response.data.message);
+            throw new Error(error?.response?.data?.message||error);
         }
     }
 
@@ -60,7 +60,7 @@ class EmployeeService {
             
             return await this.employeeRepository.update({ employeeId: empId }, employeeData);
         }catch(error){
-            throw new Error(error.response.data.message);
+            throw new Error(error?.response?.data?.message||error);
         }
     }
 
@@ -79,15 +79,16 @@ class EmployeeService {
                 `,
                 to: employee.email
             }
+            const response = await this.employeeRepository.deleteData(employee?._id);
             await axios.post(`https://localhost:7000/api/email`, emailData, {
                 httpsAgent,
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
-            return await this.employeeRepository.deleteData(employee?._id);
+            return response
         }catch(error){
-            throw new Error(error.response.data.message);
+            throw new Error(error?.response?.data?.message||error);
         }
     }
 }

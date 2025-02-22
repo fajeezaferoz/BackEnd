@@ -1,5 +1,5 @@
 @baseURL = https://localhost:6000/api
-@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTc0MDE5MTI3NiwiZXhwIjoxNzQwMTk0ODc2LCJjbGFpbXMiOnsibmFtZSI6IlNwb29ydGhpIEcgUyIsImVtYWlsIjoic3Bvb3J0aGlAZ21haWwuY29tIiwicm9sZXMiOlsiYWRtaW4iXSwidXNlck5hbWUiOiJzcG9vcnRoaS1ncyJ9fQ.MHedAlwIOTvg4q7YzQw8DCy-s7qOYUgT3VRf2au8-cTHTumsEOKfu5TwLzCGWlxdnHBeJ8_Ed_-jyk4x2yTg4ylcPpWvUH5q3KTNnnPqGU7w_DT4bhV4Bo3qYZu9vGjcqW2YD-JloWBvaymOClHhQNvAhVELww9dAkehtIXo3H0rKfEg9YEsikTTkGHVNhxH8GRz26o3zy3f44xNfBAiHhSrZH-2gQI4mBvHtXC3M_g272QsUD5SFnGz2207KinZuOs4GuanY7B5wm3GVqr5kPI74ErVr31Wq92JDO0M6o73nnuzGvN8H2noHVclYn4ssE4TlQJTQr8dH3aGLio8pQ
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTc0MDE5NTk4NSwiZXhwIjoxNzQwMTk5NTg1LCJjbGFpbXMiOnsibmFtZSI6IlNwb29ydGhpIEcgUyIsImVtYWlsIjoic3Bvb3J0aGlAZ21haWwuY29tIiwicm9sZXMiOlsiYWRtaW4iXSwidXNlck5hbWUiOiJzcG9vcnRoaS1ncyJ9fQ.gA-rAHmZDulnGO-37yDj6kR3PZK-y-kkt0CMM20mIchzmOu5nMuvhPC1mP2Dap5Noaie9kM4r4vcvAUToBx_5FDMaB2ArNwjuYrOxffuE3UZUpaLiqnNCWcwmg6lzwEd8LdAk8AGf7MmN4MNEQptFm8tEHpSLzxWIUZIP6wHLzzXKtKiBM1xK0fK5yIxq8ZXzd_4CDbxbpI4Ds1Po06_pwlU1vg5gcUrygke9Bo25r0-MuY9YTF-7x4-iZSh8aVGG-3T-VyhDlcQh5WZ5Osl4X2gl-DdoPhWI-87lFB5Fq2jbn2cJWv5LWL4uAyf7qZn8pUvaEm8t8CiJmQxdfY3uQ
 
 ### GET all admins
 GET {{baseURL}}/admins
@@ -68,8 +68,23 @@ Content-Type: application/json
     "username": "Nirmala Mahesh",
     "phone_Number": "9019867898",
     "password": "securePass123"
-
 }
+
+### PUT or Update the manager data by administrator
+PUT {{baseURL}}/admins/guru-pruthvi/managers/nirmala-mahesh
+Authorization: BEARER {{token}}
+Content-Type: application/json
+
+{
+    "name": "Nirmala",
+    "department": "Data&AI",
+    "email": "gurupruthvijm@gmail.com",
+    "username": "Nirmala Mahesh"
+}
+
+### DELETE the manager by ID
+DELETE {{baseURL}}/admins/guru-pruthvi/managers/nirmala-mahesh
+Authorization: BEARER {{token}}
 
 ### GET an admin by ID
 GET {{baseURL}}/admins/admin12345

@@ -26,7 +26,7 @@ const createRouter = () => {
     
     router
         .route('/:empId/tickets/:id')
-        .get(authorize('employee'), routeHandler(ticketControll.getEmployeeSpecificId))
+        .get(authorize('employee'), routeHandler(ticketControll.getTicketById))
         .put(authorize('employee'), routeHandler(ticketControll.updateTicket))
 
     router

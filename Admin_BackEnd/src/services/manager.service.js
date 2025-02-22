@@ -30,7 +30,7 @@ class ManagerService {
             })
             return response.data;
         } catch (error) {
-            throw new Error(error.response.data.message);
+            throw new Error(error?.response?.data?.message||error);
         }
     }
 
@@ -42,12 +42,12 @@ class ManagerService {
             const emailData = {
                 subject: "Your Details As been Updated",
                 htmlVal: `
-                <p>Dear Employee,</p>
+                <p>Dear Manager,</p>
                 <p>Your profile has been updated by admin</p>
                 <p>Regards</p>
                 <p>CodeCrafters</p>
                 `,
-                to: employee.email
+                to: manager.email
             }
             if(managerData.password)
                 managerData.password = await bcrypt.hash(managerData.password, 10);
@@ -59,7 +59,7 @@ class ManagerService {
             })
             return await this.managerRepository.update({ managerId: mrgId }, managerData);
         } catch (error) {
-            throw new Error(error.response.data.message);
+            throw new Error(error?.response?.data?.message||error);
         }
     }
 
@@ -71,22 +71,24 @@ class ManagerService {
             const emailData = {
                 subject: "Your Account Has Been Deleted",
                 htmlVal: `
-                <p>Dear Employee,</p>
+                <p>Dear Manager,</p>
                 <p>Your account has been deleted by admin</p>
                 <p>Regards</p>
                 <p>CodeCrafters</p>
                 `,
                 to: manager.email
             }
+            console.log(id);
+            const response = await this.managerRepository.deleteData(manager?._id);
             await axios.post(`https://localhost:7000/api/email`, emailData, {
                 httpsAgent,
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
-            return await this.managerRepository.deleteData({ managerId: id });
+            return response;
         } catch (error) {
-            throw new Error(error.response.data.message)
+            throw new Error(error?.response?.data?.message||error)
         }
     }
 }

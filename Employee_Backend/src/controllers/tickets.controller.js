@@ -15,8 +15,10 @@ const ticketController = () => {
         return await ticketService.createTicket(body);
     };
 
-    const updateTicket = async ({ body, id }) => {
-        return await ticketService.updateTicket(id, body);
+    const updateTicket = async ({ body, id, request }) => {
+        const token = request.headers['authorization'].split(" ")[1]
+        
+        return await ticketService.updateTicket(id, body, token);
     };
 
     const deleteTicket = async ({ id }) => {

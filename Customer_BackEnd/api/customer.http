@@ -1,13 +1,14 @@
 @baseURL = https://localhost/api
 
-@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTczOTk2NzQxOSwiZXhwIjoxNzM5OTcxMDE5LCJjbGFpbXMiOnsibmFtZSI6IlByYW5hdGhpIiwiZW1haWwiOiJwcmFuYUBleGFtcGxlLmNvbSIsInJvbGVzIjpbImN1c3RvbWVyIl0sInVzZXJOYW1lIjoicHJhbmEifX0.VcvLB7kH8GPfKr-i5uX1O_uU17pYmYaT5L1KhYr8z1qmB2DSQj-qWr6y3iFeCZ8HNvh6T8-qjH50gBHMoJ8WDyOPvyP43bEMq_ZJxaBVQPTlaGz33LfU668w1FvPUOrxRdmnf16kX6vNd7Ug9rQdEps4_7OLBSHUjaThYrSYc96kVHzrLs3-7_J990G4-Gk6hTpDrClJEN7k2Wb3Vgy-TVD_O7DGZmN41EOurstw8GU90BXPUabU-__vikpFam1n3tDMWj45wnsLNtFQuEJ9B5OrBnlYXAU1ZEBR8augw7C3rlrw_HI41fODlniFE3kdmdwzOW0RnXgkxCJ3RLCkTA
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTc0MDIwMzcxMiwiZXhwIjoxNzQwMjA3MzEyLCJjbGFpbXMiOnsibmFtZSI6IlByYW5hdGhpIiwiZW1haWwiOiJwcmFuYUBleGFtcGxlLmNvbSIsInJvbGVzIjpbImN1c3RvbWVyIl0sInVzZXJOYW1lIjoicHJhbmEifX0.aPTIWs_Grc6WLj1D8F9W0zl0Ohbz8AvjZn4IOm0Kqadx01udbNE9OnCqHDcaN-afyZy7K8wj8hNW35inOQ6opORSPUi65Ffe5kkYFM6gkrEwxHCSR50dQa6kOb9fJkUgwZ7q5AMPzoK4v4SxIt5Uh1evgnln3RSeY07wx5JANWS4MiZBNiqk1AVkwEL3wRB22O5Hgzl7waR305NH9dSGthbv3NS8Vd4URD_N2rHrrWVIn_eLKw-Gh_g8bmWUCYByhYwYdKCIUBNoKZ9j_5Pi2X19kWLbSjvG6I3qYABrVfd9vcPc1-BAZO1Z240w4qRE7jn2EFdGw4HmJeMguLYn3w
 
 ### GET all customers
 GET {{baseURL}}/customers
 Authorization: BEARER {{token}}
 
 ### GET a customer by ID
-GET {{baseURL}}/customers/guru-pruthvi
+GET {{baseURL}}/customers/jyothish-m-j
+Authorization: BEARER {{token}}
 
 ### GET a payment by particular customer
 GET {{baseURL}}/customers/guru-pruthvi/payments
@@ -76,13 +77,12 @@ DELETE {{baseURL}}/customers/guru-pruthvi
 
 
 ### PUT to update the customer Details
-PUT {{baseURL}}/customers/guru-pruthvi
+PUT {{baseURL}}/customers/jyothish-m-j
+Authorization: BEARER {{token}}
 Content-Type: application/json
 
 {
-    "email": "guru@example.com",
-    "password": "securePass",
-    "username": "guru pruthvi"
+    "email": "gurupruthvi61@gmail.com"
 }
 
 ### POST a new Raise Ticket by particular ticket
