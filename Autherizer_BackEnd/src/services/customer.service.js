@@ -24,7 +24,7 @@ class CustomerService{
     }
   
     async createCustomer(customer){
-        customer.password = await bcrypt.hash(customer.password, 10) 
+        customer.password = await bcrypt.hash(customer.password, 10)
         return await this.customerRepository.create(customer);
     }
 

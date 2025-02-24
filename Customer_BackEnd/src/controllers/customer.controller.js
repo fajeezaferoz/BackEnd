@@ -12,11 +12,13 @@ const customerController = () =>{
     const addCustomer = async ({body}) => {
         return await customerService.createCustomer(body) 
     }   
-    const updateCustomer = async ({body, id}) => await customerService.updateCustomer(id, body)
+    const updateCustomer = async ({body, id}) => {
+        await customerService.updateCustomer(id, body)
+    }
     const deleteCustomer = async ({id}) => await customerService.deleteCustomer(id)
 
     return {
-        getAllCustomer,
+        getAllCustomer, 
         getCustomerById,  
         addCustomer,
         updateCustomer,
