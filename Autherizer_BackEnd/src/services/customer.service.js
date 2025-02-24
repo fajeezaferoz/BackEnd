@@ -91,10 +91,15 @@ class CustomerService{
         if (userOTP) {
             await this.otpRepository.remove({email})
         }
-        let user = await this.customerRepository.getByEmailId({ email }); 
+        console.log("Before User:", email);
+        let user = await this.customerRepository.findOne({ email }); 
+        console.log(user);
         if (user) {
+            console.log("hi");
             throw new Error(`User with email ${email} is already registered`);
         }          
+        console.log(email);
+        console.log("Guru registered");
         let otp = Math.floor(100000 + Math.random() * 900000).toString(); // Convert to string
         await this.sendEmail({email, otp})
         const encryptedOTP = await CryptoJS.AES.encrypt(otp, process.env.JWT_SECRET).toString();
