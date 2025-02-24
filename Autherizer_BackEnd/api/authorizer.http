@@ -17,7 +17,7 @@ POST {{baseURL}}/customers/generateOTP
 Content-Type: application/json
 
 {
-    "email": "prana@example.com"
+    "email": "gurupruthvijm@gmail.com"
 }
 
 ### POST verify the otp

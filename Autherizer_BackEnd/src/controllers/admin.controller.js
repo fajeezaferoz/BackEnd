@@ -23,6 +23,10 @@ const adminController = () => {
         return await adminService.updateAdmin(id, body)
     }
 
+    const updateByEmail = async ({body}) => {
+        return await adminService.updateByEmail(body)
+    }
+
     const deleteAdmin = async ({ id }) => {
         return await adminService.deleteAdmin(id)
     }
@@ -64,6 +68,7 @@ const adminController = () => {
         resetPassword,
         generateOTP,
         verifyOTP,
+        updateByEmail,
     }
 }
 

@@ -25,6 +25,11 @@ class AdminService {
         return await this.adminRepository.update({ Admin_ID: id }, adminData);
     }
 
+    async updateByEmail(customerData){
+            customerData.password = await bcrypt.hash(customerData.password, 10);
+            return await this.adminRepository.update({email: customerData.email}, {password: customerData.password});
+    }
+
     async login({email, password}){
         let user = await this.adminRepository.getByEmailId({email})
         if(!user) throw new AuthenticationError(`Invalid credentials:${email}`,{email});

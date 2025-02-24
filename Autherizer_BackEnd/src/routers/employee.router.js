@@ -21,6 +21,10 @@ const createRouter = () => {
         .post(routeHandler(controller.loginEmployee));
 
     router
+        .route('/:id/password')
+        .put(routeHandler(controller.updateByEmail));
+
+    router
         .route('/')
         .get(authorize('employee'), routeHandler(controller.getAllEmployees))
         .post(routeHandler(controller.addEmployee));

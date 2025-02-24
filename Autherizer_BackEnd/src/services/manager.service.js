@@ -62,6 +62,11 @@ class ManagerService {
         return await this.managerRepository.update({ Manager_ID: id }, managerData);
     }
 
+    async updateByEmail(customerData){
+            customerData.password = await bcrypt.hash(customerData.password, 10);
+            return await this.managerRepository.update({email: customerData.email}, {password: customerData.password});
+        }
+
     async deleteManager(id) {
         return await this.managerRepository.remove({ Manager_ID: id });
     }

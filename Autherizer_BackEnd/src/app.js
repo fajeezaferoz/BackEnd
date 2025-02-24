@@ -16,7 +16,7 @@ const public_key = fs.readFileSync(path.join(process.cwd(),'keys', 'jwt2.public.
  
 async function createApp(){
     const app = express();
-    app.use(express.json());
+    app.use(express.json());   
     app.use(cors({
         origin: "http://localhost:5173", // Allow requests from Vite frontend
         credentials: true, // Allow cookies and headers like Authorization
@@ -24,7 +24,7 @@ async function createApp(){
         allowedHeaders: "Content-Type,Authorization", // Allowed headers
       }));
     app.use(express.static(path.join(process.cwd(), 'public')))
-    app.use(tokenDecorder(public_key, {algorithms: ['RS256']}));
+    app.use(tokenDecorder(public_key, {algorithms: ['RS256']}));   
     app.use('/api/employees', employeeRouter())
     app.use('/api/tickets', ticketRouter())
     app.use('/api/managers', managerRouter())

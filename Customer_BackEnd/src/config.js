@@ -27,7 +27,7 @@ injector
   // Payment module
   .addServiceObject('payment', payment)
   .addService('paymentRepository', mongoosePaymentRepository)
-  .addService('paymentService', paymentService);
+  .addService('paymentService', paymentService)
 
 expressx.addCustomError('MongoServerError', 400)
 

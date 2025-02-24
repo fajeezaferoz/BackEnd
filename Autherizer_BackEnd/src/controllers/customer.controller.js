@@ -16,6 +16,11 @@ const customerController = () =>{
         return await customerService.createCustomer(body) 
     }   
     const updateCustomer = async ({body, id}) => await customerService.updateCustomer(id, body)
+
+    const updateByEmail = async ({body}) => {
+        return await customerService.updateByEmail(body)
+    }
+
     const deleteCustomer = async ({id}) => await customerService.deleteCustomer(id)
 
     const loginCustomer = async ({body}) => {
@@ -38,6 +43,10 @@ const customerController = () =>{
         return null
     }
 
+    const validateOTP = async ({body}) => {
+        return await customerService.otpForValidateEmail(body);
+    }
+
     const generateOTP = async ({body}) => {
         return await customerService.generateOTP(body);
     }
@@ -57,6 +66,8 @@ const customerController = () =>{
         resetPassword,
         generateOTP, 
         verifyOTP,
+        validateOTP,
+        updateByEmail
     }
 }
 

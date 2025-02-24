@@ -26,7 +26,7 @@ Content-Type: application/json
 
 {
     "email": "johndoe@example.com",
-    "otp": "585999"
+    "otp": "312201"
 }
 
 ### GET all employees

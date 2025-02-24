@@ -16,7 +16,15 @@ POST {{baseURL}}/customers/generateOTP
 Content-Type: application/json
 
 {
-    "email": "prana@example.com"
+    "email": "gurupruthvijm@gmail.com"
+}
+
+### POST validate the otp w.r.t email
+POST {{baseURL}}/customers/validateTheOTP
+Content-Type: application/json
+
+{
+    "email": "maheshgupta5812@gmail.com"
 }
 
 ### POST verify the otp
@@ -24,8 +32,8 @@ POST {{baseURL}}/customers/verifyOTP
 Content-Type: application/json
 
 {
-    "email": "prana@example.com",
-    "otp": "278424"
+    "email": "gurupruthvijm@gmail.com",
+    "otp": "195017"
 }
 
 ###

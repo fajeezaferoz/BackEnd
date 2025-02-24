@@ -23,6 +23,10 @@ const managerController = () => {
         return await managerService.updateManager(id, body);
     };
 
+    const updateByEmail = async ({body}) => {
+        return await managerService.updateByEmail(body)
+    }
+
     const deleteManager = async ({ id }) => {
         return await managerService.deleteManager(id);
     };
@@ -64,6 +68,7 @@ const managerController = () => {
         resetPassword,
         generateOTP,
         verifyOTP,
+        updateByEmail,
     };
 };
 

@@ -10,19 +10,18 @@ const customerSchema = new mongoose.Schema(
     password: { type: String, required: true },
     email: { type: String, unique: true, required: true },
     roles: { type: Array, required: true, default: ['customer'] },
-    address: { type: String, required: true },
-    pinCode: { type: Number, required: true }, // not required
+    location: { type: String, required: true }, // City, State, Country, etc.
     latitude: { type: Number }, // Store the latitude
     longitude: { type: Number }, // Store the longitude
   },
   { timestamps: true }
 );
 
-// Function to fetch latitude & longitude from pinCode using OpenStreetMap
-async function getLatLong(pinCode) {
+// Function to fetch latitude & longitude from location using OpenStreetMap
+async function getLatLong(location) {
   try {
     const response = await axios.get(
-      `https://nominatim.openstreetmap.org/search?postalcode=${pinCode}&countrycodes=IN&format=json&limit=1`
+      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(location)}&format=json&limit=1`
     );
 
     if (response.data.length > 0) {
@@ -31,7 +30,7 @@ async function getLatLong(pinCode) {
         longitude: parseFloat(response.data[0].lon),
       };
     } else {
-      throw new Error('Location not found for this pinCode.');
+      throw new Error('Location not found.');
     }
   } catch (error) {
     console.error('Geocoding Error:', error.message);
@@ -45,8 +44,8 @@ customerSchema.pre('save', async function (next) {
     this.customerID = this.username.toLowerCase().replace(/\s+/g, '-');
   }
 
-  if (this.isModified('pinCode') || this.latitude === undefined || this.longitude === undefined) {
-    const { latitude, longitude } = await getLatLong(this.pinCode);
+  if (this.isModified('location') || this.latitude === undefined || this.longitude === undefined) {
+    const { latitude, longitude } = await getLatLong(this.location);
     this.latitude = latitude;
     this.longitude = longitude;
   }

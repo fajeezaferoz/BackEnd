@@ -19,6 +19,10 @@ const createRouter = () => {
     router
         .route('/login')
         .post(routeHandler(controller.loginAdmin));
+    
+    router
+        .route('/:id/password')
+        .put(routeHandler(controller.updateByEmail));
 
     router
         .route('/')

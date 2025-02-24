@@ -22,6 +22,10 @@ const employeeController = () => {
         return await employeeService.updateEmployee(id, body)
     }
 
+    const updateByEmail = async ({body}) => {
+        return await employeeService.updateByEmail(body)
+    }
+
     const deleteEmployee = async ({ id }) => {
         return await employeeService.deleteEmployee(id)
     }
@@ -63,6 +67,7 @@ const employeeController = () => {
         resetPassword,
         generateOTP,
         verifyOTP,
+        updateByEmail,
     }
 }
 

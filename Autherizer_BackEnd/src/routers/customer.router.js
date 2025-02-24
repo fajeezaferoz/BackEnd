@@ -15,6 +15,10 @@ const createRouter = () => {
     router
      .route('/generateOTP')
      .post(routeHandler(controller.generateOTP))
+
+    router
+     .route('/validateTheOTP')
+     .post(routeHandler(controller.validateOTP));
     
     router
      .route('/verifyOTP')
@@ -22,7 +26,7 @@ const createRouter = () => {
     
     router
      .route('/resetPassword')
-     .post(routeHandler(controller.resetPassword))
+     .post(routeHandler(controller.resetPassword)) 
 
     router
      .route('/')
@@ -35,6 +39,10 @@ const createRouter = () => {
      .put(authenticate, routeHandler(controller.updateCustomer))
      .delete(authenticate, routeHandler(controller.deleteCustomer));
 
+    router
+     .route('/:id/password')
+     .put(routeHandler(controller.updateByEmail));
+    
     router
      .route('/current')
      .get(authenticate,routeHandler(controller.currentUserInfo))
