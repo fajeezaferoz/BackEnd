@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const CryptoJS = require('crypto-js')
 const axios = require('axios');
 const https = require('https');
+
 const httpsAgent = new https.Agent({
     rejectUnauthorized: false, 
 });
@@ -21,20 +22,20 @@ class ManagerService {
         return await this.managerRepository.findOne({ Manager_ID: id });
     }
 
-    async sendEmail(employee){
+    async sendEmail(employee, subject, htmlValue){
         const emailData = {
-            subject: `Welcome to Brillio`,
-            htmlVal: `
+            subject: subject||`Welcome to Brillio`,
+            htmlVal: htmlValue||`
             <p>Dear ${employee.name}</p>
-            <p>Welcome to Brillio! We're excited to have you join our team. Please find below your login credentials:</p>
+            <p>Welcome to Brillio! We're excited to have you join our team. Please find below your login emailId and reset the password using forget password:</p>
             <p>Email: <b>${employee.email}</b></p>
-            <p>Password: ${employee.password}</p>
             <p>Thank you for joining Brillio, and we look forward to working with you!</p>
             <p>Regards,<p>
             CodeCrafters
             `,
             to: employee.email
         }
+        
         try{
             axios.post(`https://localhost:7000/api/email`, emailData, {
                 httpsAgent,
@@ -87,7 +88,7 @@ class ManagerService {
     async generateOTP({ email }) {
         // Validate email in the otp model
 
-        let userOTP = await this.otpRepository.findOne({email: email})
+        let userOTP = await this.otpRepository.findOne({email})
         if (userOTP) {
             await this.otpRepository.remove({email})
         }
@@ -98,7 +99,16 @@ class ManagerService {
         let otp = Math.floor(100000 + Math.random() * 900000).toString(); // Convert to string
         const encryptedOTP = await CryptoJS.AES.encrypt(otp, process.env.JWT_SECRET).toString();
         console.log(otp,  CryptoJS.AES.decrypt(encryptedOTP, process.env.JWT_SECRET).toString(CryptoJS.enc.Utf8));
-        
+        const dataForEmail = `
+            <p>Dear ${user.name},</p>
+            <p>Someone recently asked for a One Time Password (OTP) to  <b>Reset the Password of Customer Management System</b>.</p>
+            <p>Your 6 Digit One-Time Password (OTP) is:</p>
+            <p style="font-size: 48px; font-weight: bold; color: blue;">${otp}</p>
+            <p><b>Please Note:</b> This OTP is valid only for the next 15 minutes after which it will expire.</p>
+            <p><b>Please do not share this OTP with anyone.</b></p>
+            <p>Regards,</p>
+            <p><b>CodeCrafters</b></p>`;
+        await this.sendEmail(user, "Request for OTP", dataForEmail)
         const data = {
             email: user.email,
             otp: encryptedOTP

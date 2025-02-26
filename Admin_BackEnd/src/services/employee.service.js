@@ -47,7 +47,7 @@ class EmployeeService {
                 <p>Regards</p>
                 <p>CodeCrafters</p>
                 `,
-                to: employee.email
+                to: employee.email||"gurupruthvi61@gmail.com"
             }
             if(employeeData.password)
                 employeeData.password = await bcrypt.hash(employeeData.password, 10);
@@ -57,7 +57,7 @@ class EmployeeService {
                     'Content-Type': 'application/json'
                 }
             })
-            
+            console.log(employeeData);
             return await this.employeeRepository.update({ employeeId: empId }, employeeData);
         }catch(error){
             throw new Error(error?.response?.data?.message||error);
@@ -73,7 +73,7 @@ class EmployeeService {
                 subject: "Your Account as been Deactivated",
                 htmlVal: `
                 <p>Dear ${employee.name},</p>
-                <p>Your profile has been Deactivated</p>
+                <p>Your profile has been Deactivated by Admin.</p>
                 <p>Regards</p>
                 <p>CodeCrafters</p>
                 `,

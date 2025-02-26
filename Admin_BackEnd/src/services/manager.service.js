@@ -21,6 +21,7 @@ class ManagerService {
     }
 
     async createManager(manager) {
+        // console.log("pruthvi: ", manager);
         try {
             const response = await axios.post(`https://localhost:7000/api/managers`, manager, {
                 httpsAgent,

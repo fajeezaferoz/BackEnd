@@ -7,8 +7,8 @@ POST {{baseURL}}/customers/login
 Content-Type: application/json
 
 {
-    "email": "prana@example.com",
-    "password": "prana123@"
+    "email": "gurupruthvi61@gmail.com",
+    "password": "901@Guru"
 }
 
 ### POST generate the otp w.r.t email

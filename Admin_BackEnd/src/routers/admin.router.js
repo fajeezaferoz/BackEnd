@@ -25,12 +25,12 @@ const createRouter = () => {
         .delete(authorize('admin'), routeHandler(admincontrol.deleteAdmin));
     
     router
-        .route('/:id/employee')
+        .route('/:id/employees')
         .post(authorize('admin'), routeHandler(employeecontrol.addEmployee))
         .get(authorize('admin'), routeHandler(employeecontrol.getAllEmployees))
     
     router
-        .route('/:id/employee/:empId')
+        .route('/:id/employees/:empId')
         .put(authorize('admin'), routeHandler(employeecontrol.updateEmployee))
         .delete(authorize('admin'), routeHandler(employeecontrol.deleteEmployee));
     
