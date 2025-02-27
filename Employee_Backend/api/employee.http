@@ -1,5 +1,5 @@
 @baseURL = https://localhost:8000/api
-@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTc0MDMyMTYxMSwiZXhwIjoxNzQwMzI1MjExLCJjbGFpbXMiOnsibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZXMiOlsiZW1wbG95ZWUiXSwidXNlck5hbWUiOiJqb2huLWRvZSJ9fQ.RrGrZm0GEEgvJN-WRdawEE8retkM43z2NEZ2N1QpanaBEw68qJbqpo5jaWTaHID4uX8uxy8EhYoFdn4q3hh2DcSVFQeRtQdlFkhb3oBo-YTD5LAs9jBpnEPN9ygncE9Lqty-AEirMCbIG7qikTbtq6uq6_frR0R8mbs4ZZPvyaL6jge_8PYMa5iFIO-aX7M1fgNkHHMSNOtYNbFjeqzxRSqqgklxbVw-1lN9D6D7Yb17BtTJilkX6Kw0B1gJVuq275rz11uMmVdCV7IPxC0ZlOCMzgKw9u5qiFG9afkj-b1jiUS2BxWwYyrf75SpYmPFi26F73V0YuvjeDym_WKG2g
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTc0MDY0MDY1MywiZXhwIjoxNzQwNjQ0MjUzLCJjbGFpbXMiOnsibmFtZSI6IlJvaGFuIiwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZXMiOlsiZW1wbG95ZWUiXSwidXNlck5hbWUiOiJqb2huLWRvZSJ9fQ.aZtiDdxgeOEFtUBWCRCrl8AmfWcXGyTT8luMCRHUDjSw9x0rXOxIsuG-cFD5ZS0CRWPR7aoM0es_6AhLQNY6eX26bEU14AzVLQOowOTi8IJrZrslnUIRi4s5O5PYn0Q3qVNg2S44tNl3Z_4cF_6MdZ2HdGQ1PNKSa3dj9zfyR2eYN9VfA8GYWWY5TQcuAMg_e7HIl2Jlmn_LDNgltPI2EfiyWDZDCuJ_o1FTOTESLSKR3colgCczn7uV64bt70kOeXWzi3Ro1GXvymQaRaTn-hyJympQ74cAzqAFJBn4wAQkBoSqXfn0bcfCHvONSsGbBE29DlpQ3sHPLfkmNZfYhg
 
 ### GET all employees
 GET {{baseURL}}/employees
@@ -16,11 +16,11 @@ GET {{baseURL}}/employees/nirmala
 Authorization: BEARER {{token}}
 
 ### GET an employee by ID with tickets
-GET {{baseURL}}/employees/nirmala/tickets
+GET {{baseURL}}/employees/guru-pruthvi-j-m/tickets
 Authorization: BEARER {{token}}
 
 ### GET an employee stats
-GET {{baseURL}}/employees/nirmala/stats
+GET {{baseURL}}/employees/guru-pruthvi-j-m/stats
 Authorization: BEARER {{token}}
 
 ### GET an employee with INVALID ID

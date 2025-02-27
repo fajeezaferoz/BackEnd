@@ -40,7 +40,7 @@ class EmployeeService {
         let count = 0;
     
         tickets.forEach(ticket => {
-            if (ticket.ticketStatusHistory.length > 1) {
+            if (ticket.ticketStatusHistory.length > 0) {
                 const openStatus = ticket.ticketStatusHistory.find(status => status.status === "OPEN");
                 const nextStatus = ticket.ticketStatusHistory.find(status => status.status === "PENDING");
                 if (openStatus && nextStatus) {
@@ -72,6 +72,7 @@ class EmployeeService {
                 }
             }
         });
+        console.log(count);
         return count > 0 ? (totalResolutionTime / count) : 0;
     }
 
@@ -79,7 +80,6 @@ class EmployeeService {
         const employee = await this.employeeRepository.findOne({ employeeId: id});
         if(!employee)
             throw new Error('Employee not found');
-
         const response = await axios.get(`https://localhost:8000/api/employees/${employee.employeeId}/tickets`, {
             httpsAgent,
             headers: {
@@ -90,6 +90,7 @@ class EmployeeService {
         const ticketsAssignedToEmployee = response.data
         employee.avgResolutionTime=await this.calculateAverageResponseTime(ticketsAssignedToEmployee);
         employee.avgResponseTime=await this.calculateAverageResolutionTime(ticketsAssignedToEmployee);
+        // console.log("Guru", ticketsAssignedToEmployee, employee.avgResolutionTime, employee.avgResponseTime);
         await this.updateEmployee(employee.employeeId, employee)
         return {employeeId: employee.employeeId, avgResponseTime: employee.avgResolutionTime, avgResolutionTime: employee.avgResponseTime}
     }

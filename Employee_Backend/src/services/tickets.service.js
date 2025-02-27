@@ -68,12 +68,37 @@ class TicketService {
                 to: userEmail
             };
             console.log("Sending email with data:", emailData);
-            const emailResponse = await axios.post(`https://localhost:7000/api/email`, emailData, {
+            await axios.post(`https://localhost:7000/api/email`, emailData, {
                 httpsAgent,
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
+            // console.log("Guru", ticket.employeeId);
+            await axios.get(`https://localhost:8000/api/employees/${ticket.employeeId}/stats`, {
+                httpsAgent,
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            const employee = await axios.get(`https://localhost:8000/api/employees/${ticket.employeeId}`,{
+                httpsAgent,
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            console.log(employee.data.managerId);
+            
+            await axios.get(`https://localhost:5000/api/managers/${employee.data.managerId}/stats`, {
+                httpsAgent,
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            console.log("Guru Pruthvi");
             return response;
         } catch (error) {
             throw new Error(error.message);

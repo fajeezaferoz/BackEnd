@@ -28,7 +28,6 @@ class TicketService {
                     'Authorization': `Bearer ${token}`
                 }
             })
-            
             if (!customer) {
                 throw new Error('Customer not found');
             }
@@ -43,6 +42,7 @@ class TicketService {
                 }
             });
             const manager = allManagers.data.find(manager => manager.department === ticket.department);
+            // console.log(manager);
             if (!manager) {
                 throw new Error('No manager found in the specified department');
             }
@@ -60,10 +60,14 @@ class TicketService {
                 throw new Error('No employees found to assign the ticket');
             }
             employeeTicketCount.data.sort((a, b) => a.ticketCount - b.ticketCount);
-            ticket.employeeId = employeeTicketCount.data[0]._id;
+            console.log(employeeTicketCount.data[0].employeeId);
+            
+            ticket.employeeId = employeeTicketCount.data[0].employeeId;
+            console.log(ticket);
+            
             return await this.ticketRepository.create(ticket);
         } catch (error) {
-            throw error;
+            throw error; 
         }
     }
 

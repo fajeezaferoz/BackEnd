@@ -80,32 +80,41 @@ class MongooseTicketRepository extends MongooseRepository {
 
     async getTicketCountByEmployeeForManager(filter) {
         try {
-            const result = await this.model.aggregate([
-                { 
-                    $lookup: {
-                        from: 'employee',
-                        localField: 'employeeId',
-                        foreignField: 'employeeId',
-                        as: 'employeeDetails'
-                    }
-                },
-                { $unwind: { path: '$employeeDetails', preserveNullAndEmptyArrays: false } },
-                { $match: { 'employeeDetails.managerId': filter.managerId } },
-                {
-                    $group: {
-                        _id: '$employeeDetails.employeeId',
-                        employeeName: { $first: '$employeeDetails.name' },
-                        ticketCount: { $sum: 1 }
-                    }
+          const result = await this.model.db
+            .collection("employee")
+            .aggregate([
+              { $match: { managerId: filter.managerId } },
+              { 
+                $lookup: {
+                  from: "tickets",           // assuming your tickets collection is called "tickets"
+                  localField: "employeeId",  // employee field in the employee collection
+                  foreignField: "employeeId",// matching field in the tickets collection
+                  as: "tickets"
                 }
-            ]);
-    
-            return result.length ? result : { message: "No tickets found for employees under this manager" };
+              },
+              {
+                $addFields: {
+                  ticketCount: { $size: "$tickets" } // count tickets; returns 0 if none found
+                }
+              },
+              {
+                $project: {
+                  _id: 0,
+                  employeeId: 1,
+                  employeeName: "$name",
+                  ticketCount: 1
+                }
+              }
+            ])
+            .toArray();
+      
+          return result.length ? result : [{ message: "No employees found under this manager" }];
         } catch (error) {
-            console.error('Error fetching ticket count per employee for manager:', error);
-            throw error;
+          console.error("Error fetching ticket count per employee for manager:", error);
+          throw error;
         }
-    }
+      }
+      
     
 }
 

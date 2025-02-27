@@ -54,7 +54,7 @@ const createRouter = () => {
 
     router
         .route('/:id/stats')
-        .get(authorize('manager'), routeHandler(controller.getStatusForManager))
+        .get(authorize('manager', 'employee'), routeHandler(controller.getStatusForManager))
 
     return router;
 };

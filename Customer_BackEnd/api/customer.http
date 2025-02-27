@@ -1,6 +1,6 @@
 @baseURL = https://localhost/api
 
-@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTc0MDQzOTM4NCwiZXhwIjoxNzQwNDQyOTg0LCJjbGFpbXMiOnsibmFtZSI6Ikd1cnUgUHJ1dGh2aSBKIE0iLCJlbWFpbCI6Imd1cnVwcnV0aHZpNjFAZ21haWwuY29tIiwicm9sZXMiOlsiY3VzdG9tZXIiXSwidXNlck5hbWUiOiJndXJ1LXBydXRodmkifX0.Udf-x1NhiEU0uvrIJRDJeHbjsqDQME4KR00lgVu1WFDQrjpK_sZWN9cEIzei8oGFLnqY0TUnnL9anSHxbBaEkLDaQrJxw9l4OT_0f5VX_YFSAANwqp-BkhpH07Zvlym7PeYVlcfHxj70NiiiygS0WPqLMlb4etix9RFmmmrJpCVYAOHqO5PvX1YJroVYR3hIHuscBsYHvfi1DWkVR9-s11MN4ETrF4hlgS70bUmhzwhS7nJBigWqx7Iz7KnTaHNoyjfhI7aKcLEEvny3Lf48QAIgxN2pN3Gr6zBdya2M9C5ZcOYqgdwZrwnsQseiiXhvbVgpOx3C4CKq0hjmUv1EOg
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTc0MDU4MDEzOCwiZXhwIjoxNzQwNTgzNzM4LCJjbGFpbXMiOnsibmFtZSI6Ikd1cnUgUHJ1dGh2aSIsImVtYWlsIjoiZ3VydXBydXRodmk2MUBnbWFpbC5jb20iLCJyb2xlcyI6WyJjdXN0b21lciJdLCJ1c2VyTmFtZSI6Imd1cnUtcHJ1dGh2aSJ9fQ.Hd9n6i9MJsHpMYT4djJ96sVvIcvvkwAh1gxQQn381XbvWFTc0OZBi_wTnuylz3qt3IC9kjjf_lONfVgqA9FCuDTzpCsEqj0DtFZrRZ4liGeQ2TIutjs8kKL6d5QaaIuOJWmK3btn8x4h-x9aP5QrQc13FJp7tr6oAzjM8DguI4IGBBou6HqTYioZ76nsurl31VRbznvqZJc9B_sddnXfuZ7bUcHGdMlHsS8iXoHyYDZyJ8c1B43Nsz5snF6ML7O1M74DcKm_6P_xAEd96zejWpJ-CP_-TOR-NDWWUeSNcnV7zY_hsPkRvu8R2G6dyhuAtf8OlJZ1WflkXin7EdLvzg
 
 ### GET all customers
 GET {{baseURL}}/customers
@@ -33,9 +33,8 @@ Authorization: BEARER {{token}}
 Content-Type: application/json
 
 {
-    "ticketType": "Technical Issue",
     "ticketDescription": "There is a Glich in the Dashboard.",
-    "department": "Data&AI"
+    "department": "Product-and-Platform-Engineering" 
 }
 
 

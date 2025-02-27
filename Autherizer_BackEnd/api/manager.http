@@ -34,8 +34,8 @@ POST {{baseURL}}/managers/login
 Content-Type: application/json
 
 {
-    "email": "johndoe@example.com",
-    "password": "hashedpassword123"
+    "email": "maheshgupta5812@gmail.com",
+    "password": "988@Mahesh"
 }
 
 ###

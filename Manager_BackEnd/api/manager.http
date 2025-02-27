@@ -1,6 +1,6 @@
 @baseURL = https://localhost:5000/api
 
-@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTc0MDM2MzQ2MiwiZXhwIjoxNzQwMzY3MDYyLCJjbGFpbXMiOnsibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZXMiOlsibWFuYWdlciJdLCJ1c2VyTmFtZSI6ImpvaG5kb2UifX0.J5Ldi9Fz3wqh1UG1C4EM6nv_0mBDiCpnFNW4c_i8AOzYPs9hg2_1dq3p4Qs-Z7m01mg7MQNM2ZZxOfBawwJEIFx7GFan5HaFwnRdHA9VXJhcS1XoPu8fDPzHfHk59IL04IT9wdSVs_senamfPkfLYbrVdguDVAyN8UO7wnx33VdVXvaD8X0DIJ3zVP8ZcMMjYIlEnB8b0592QeNXtyfq1Pq-Kuoc80SZPRnFuOWsISRBQX3j8gmh5t3MKzHI6pZjypS_qlqJXT6v_F-f6xq2YwjpJlcViR7127tAithuKwOHzkvXIE1xcsDyY48xn7AChWTCGVLjX1GKiaMBg0r_dg
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc2VyQXV0aGVudGljYXRvciIsImlhdCI6MTc0MDY1MDU4MSwiZXhwIjoxNzQwNjU0MTgxLCJjbGFpbXMiOnsibmFtZSI6Ik1haGVzaCBHdXB0YSIsImVtYWlsIjoibWFoZXNoZ3VwdGE1ODEyQGdtYWlsLmNvbSIsInJvbGVzIjpbIm1hbmFnZXIiXSwidXNlck5hbWUiOiJtYWhlc2gtZ3VwdGEifX0.b8o1mHFBFmRctGnFnKr5bnnRLZPBtlRvlI1bVaiUCh1b2kY4h_qWDIKN0gozUB2FZggqBeP6s_TwqkEqzqRrYGxpip192SaCgfEZ98HVIC3ZWdDVFpRQRO4nnV4d0hkzeDRQkJEJrNesFr-_v29VhF10q-kw6qzXYp1zy_OwiWywGRtnsT5HSFc8m-LE_CpzOiXfjWXEDbuXXH1s65R55CdBbuF5SAWbB5J-LbiMMmmcFGI6ig-ocjuqJAcBwzHNNXXGLVPy6gDmEeoGt4_7Ujlg4Cf6c6xzGM7v3_mmLE00cMum2KMyWWE6NBMcdlv8-BthL4YtZs55QFbznVsdeA
 
 ###GET all managers
 GET {{baseURL}}/managers
@@ -18,7 +18,7 @@ Authorization: BEARER {{token}}
 
 ### GET Specified ManagerId stats
 
-GET {{baseURL}}/managers/johndoe/stats
+GET {{baseURL}}/managers/mahesh-gupta/stats
 Authorization: BEARER {{token}}
 
 
@@ -32,7 +32,7 @@ GET {{baseURL}}/managers/guru_pruthvi/ticketStatus/pending/TICKET567
 
 ### Get the specified Manager ticket count of their collegues
 
-GET {{baseURL}}/managers/johndoe/collegue/ticketCount
+GET {{baseURL}}/managers/mahesh-gupta/collegue/ticketCount
 Authorization: BEARER {{token}}
 
 
