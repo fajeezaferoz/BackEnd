@@ -41,12 +41,12 @@ const createRouter = () => {
     
     router
         .route('/:id/collegue')
-        .get(authorize('manager'), routeHandler(employeeControl.getColleguesForManager))
+        .get(authorize('manager', 'employee'), routeHandler(employeeControl.getColleguesForManager))
     
 
     router
         .route('/:managerId/collegue/:id')
-        .get(authorize('manager'), routeHandler(employeeControl.getEmployeeByIdForManager))
+        .get(authorize('manager', 'employee'), routeHandler(employeeControl.getEmployeeByIdForManager))
 
     router
         .route('/:id/collegue/numOfTickets')
