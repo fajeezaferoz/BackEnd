@@ -4,7 +4,7 @@ class PaymentService {
     }
 
     async getAllPayments() {
-        return await this.paymentRepository.getAll();
+        return await this.paymentRepository.getAll(); 
     }
 
     async getPaymentById(id) {

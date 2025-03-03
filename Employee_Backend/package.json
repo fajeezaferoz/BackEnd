@@ -1,7 +1,7 @@
 {
   "name": "employee_backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "node src/main 8000",
     "dev": "nodemon src/main.js 8000"
