@@ -19,7 +19,7 @@ class TicketService {
         return await this.ticketRepository.findOne({ ticketId: id });
     }
 
-    async createTicket(ticket, token) { 
+    async createTicket(ticket, token) {  
         try {
             const customer = await axios.get(`http://localhost:8080/api/customers/${ticket.customerId}`,{
                 httpsAgent,
